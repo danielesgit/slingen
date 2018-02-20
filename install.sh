@@ -22,8 +22,9 @@ pip install -U setuptools
 LC_ALL=C pip install numpy
 pip install -r py2req.txt
 
+rm -rf scloog
+tar xzf scloog.tar.gz
 cd scloog
-
 ./configure --prefix=$(readlink -f ../libs) --with-osl=bundled --with-isl=bundled
 make clean
 make -j $(grep -m 1 "^cpu cores" /proc/cpuinfo | grep -o "[0-9]*")
