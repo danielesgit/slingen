@@ -33,6 +33,7 @@ make install
 cd ..
 rm -rf boost_1_55_0
 wget https://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.gz/download -O boost.tar.gz
+tar xzf boost.tar.gz
 cd boost_1_55_0
 ./bootstrap.sh --prefix=$(readlink -f ../libs) --with-libraries=python --with-python=$PYTHON2BIN
 ./b2 install cxxflags="-I$PYTHON2INC"
