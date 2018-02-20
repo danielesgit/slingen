@@ -1,0 +1,11 @@
+
+%% Equal( NL[ t0_1 ], Assign_Mul_LowerTriangular_Matrix_Matrix( L0_11, t0_1 ) )
+@out0@[h(min(@nb@,@m0@),@m0@,0), h(@m2@,@m2@,0)] = Assign_Mul_LowerTriangular_Matrix_Matrix_opt(min(@nb@,@m0@), @m2@; @op0@[h(min(@nb@,@m0@),@m0@,0), h(min(@nb@,@m0@),@m0@,0)]#LowerTriangular#, @out0@[h(min(@nb@,@m0@),@m0@,0), h(@m2@,@m2@,0)]);
+For[ @it@; @nb@; @m0@-(@nb@); @nb@ ]
+{
+	%% Equal( NL[ t0_1 ], Plus( Times( Minus( L0_10 ), t0_0 ), y_1 ) )
+	@out0@[h(@nb@,@m0@,@it@), h(@m2@,@m2@,0)] = @op1@[h(@nb@,@m0@,@it@), h(@m2@,@m2@,0)] + -@op0@[h(@nb@,@m0@,@it@), h(@it@,@m0@,0)] * @out0@[h(@it@,@m0@,0), h(@m2@,@m2@,0)];
+	%% Equal( NL[ t0_1 ], Assign_Mul_LowerTriangular_Matrix_Matrix( L0_11, t0_1 ) )
+	@out0@[h(@nb@,@m0@,@it@), h(@m2@,@m2@,0)] = Assign_Mul_LowerTriangular_Matrix_Matrix_opt(@nb@, @m2@; @op0@[h(@nb@,@m0@,@it@), h(@nb@,@m0@,@it@)]#LowerTriangular#, @out0@[h(@nb@,@m0@,@it@), h(@m2@,@m2@,0)]);
+};
+

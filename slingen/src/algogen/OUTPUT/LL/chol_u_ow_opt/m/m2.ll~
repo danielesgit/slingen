@@ -1,0 +1,21 @@
+
+%% Equal( NL[ U_11 ], chol_u_ow( U_11 ) )
+@out0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#UpperTriangular# = chol_u_ow_opt(min(@nb@,@m@), min(@nb@,@m@); @out0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#UpperTriangular#);
+%% Equal( NL[ U_12 ], ldiv_ut_ow( U_12, U_11 ) )
+@out0@[h(min(@nb@,@m@),@m@,0), h(@m@-(0+min(@nb@,@m@)),@m@,0+min(@nb@,@m@))] = ldiv_ut_ow_opt(min(@nb@,@m@), @m@-(0+min(@nb@,@m@)); @out0@[h(min(@nb@,@m@),@m@,0), h(@m@-(0+min(@nb@,@m@)),@m@,0+min(@nb@,@m@))], @out0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#UpperTriangular#);
+For[ @it@; @nb@; @m@-(@nb@+1); @nb@ ]
+{
+	%% Equal( NL[ U_11 ], Plus( Times( Minus( Transpose( U_01 ) ), U_01 ), A_11 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#UpperTriangular# = -trans(@out0@[h(@it@,@m@,0), h(@nb@,@m@,@it@)]) * @out0@[h(@it@,@m@,0), h(@nb@,@m@,@it@)] + @op0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#Symmetric,USMatAccess#;
+	%% Equal( NL[ U_11 ], chol_u_ow( U_11 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#UpperTriangular# = chol_u_ow_opt(@nb@, @nb@; @out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#UpperTriangular#);
+	%% Equal( NL[ U_12 ], Plus( Times( Minus( Transpose( U_01 ) ), U_02 ), A_12 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@m@-(@it@+@nb@),@m@,@it@+@nb@)] = -trans(@out0@[h(@it@,@m@,0), h(@nb@,@m@,@it@)]) * @out0@[h(@it@,@m@,0), h(@m@-(@it@+@nb@),@m@,@it@+@nb@)] + @op0@[h(@nb@,@m@,@it@), h(@m@-(@it@+@nb@),@m@,@it@+@nb@)];
+	%% Equal( NL[ U_12 ], ldiv_ut_ow( U_12, U_11 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@m@-(@it@+@nb@),@m@,@it@+@nb@)] = ldiv_ut_ow_opt(@nb@, @m@-(@it@+@nb@); @out0@[h(@nb@,@m@,@it@), h(@m@-(@it@+@nb@),@m@,@it@+@nb@)], @out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#UpperTriangular#);
+};
+%% Equal( NL[ U_11 ], Plus( Times( Minus( Transpose( U_01 ) ), U_01 ), A_11 ) )
+@out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#UpperTriangular# = -trans(@out0@[h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]) * @out0@[h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))] + @op0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#Symmetric,USMatAccess#;
+%% Equal( NL[ U_11 ], chol_u_ow( U_11 ) )
+@out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#UpperTriangular# = chol_u_ow_opt(@nb@, @nb@; @out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#UpperTriangular#);
+

@@ -1,0 +1,11 @@
+
+For[ @it@; 0; @n@-(@nb@+1); @nb@ ]
+{
+	%% Equal( NL[ D_1 ], ftmpyozk_lwn( A, B_11, D_1 ) )
+	@out0@[h(@m@,@m@,0), h(@nb@,@n@,@it@)] = ftmpyozk_lwn_opt(@m@, @nb@; @op0@[h(@m@,@m@,0), h(@m@,@m@,0)]#LowerTriangular#, @op1@[h(@nb@,@n@,@it@), h(@nb@,@n@,@it@)]#LowerTriangular#, @out0@[h(@m@,@m@,0), h(@nb@,@n@,@it@)]);
+	%% Equal( NL[ D_2 ], Plus( Times( Minus( D_1 ), Transpose( B_21 ) ), D_2 ) )
+	@out0@[h(@m@,@m@,0), h(@n@-(@it@+@nb@),@n@,@it@+@nb@)] = -@out0@[h(@m@,@m@,0), h(@nb@,@n@,@it@)] * trans(@op1@[h(@n@-(@it@+@nb@),@n@,@it@+@nb@), h(@nb@,@n@,@it@)]) + @out0@[h(@m@,@m@,0), h(@n@-(@it@+@nb@),@n@,@it@+@nb@)];
+};
+%% Equal( NL[ D_1 ], ftmpyozk_lwn( A, B_11, D_1 ) )
+@out0@[h(@m@,@m@,0), h(@nb@,@n@,max(@n@-@nb@, 0))] = ftmpyozk_lwn_opt(@m@, @nb@; @op0@[h(@m@,@m@,0), h(@m@,@m@,0)]#LowerTriangular#, @op1@[h(@nb@,@n@,max(@n@-@nb@, 0)), h(@nb@,@n@,max(@n@-@nb@, 0))]#LowerTriangular#, @out0@[h(@m@,@m@,0), h(@nb@,@n@,max(@n@-@nb@, 0))]);
+

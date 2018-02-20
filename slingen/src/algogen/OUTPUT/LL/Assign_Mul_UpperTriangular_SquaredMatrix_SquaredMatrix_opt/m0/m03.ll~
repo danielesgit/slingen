@@ -1,0 +1,11 @@
+
+%% Equal( NL[ M8_1 ], Assign_Mul_UpperTriangular_SquaredMatrix_SquaredMatrix( U0_11, M8_1 ) )
+@out0@[h(min(@nb@,@m0@),@m0@,@m0@-(0+min(@nb@,@m0@))), h(@m2@,@m2@,0)] = Assign_Mul_UpperTriangular_SquaredMatrix_SquaredMatrix_opt(min(@nb@,@m0@), @m2@; @op0@[h(min(@nb@,@m0@),@m0@,@m0@-(0+min(@nb@,@m0@))), h(min(@nb@,@m0@),@m0@,@m0@-(0+min(@nb@,@m0@)))]#UpperTriangular#, @out0@[h(min(@nb@,@m0@),@m0@,@m0@-(0+min(@nb@,@m0@))), h(@m2@,@m2@,0)]);
+For[ @it@; @nb@; @m0@-(@nb@); @nb@ ]
+{
+	%% Equal( NL[ M8_1 ], Plus( Times( Minus( U0_12 ), M8_2 ), M7_1 ) )
+	@out0@[h(@nb@,@m0@,@m0@-(@it@+@nb@)), h(@m2@,@m2@,0)] = -@op0@[h(@nb@,@m0@,@m0@-(@it@+@nb@)), h(@it@,@m0@,@m0@-@it@)] * @out0@[h(@it@,@m0@,@m0@-@it@), h(@m2@,@m2@,0)] + @op1@[h(@nb@,@m0@,@m0@-(@it@+@nb@)), h(@m2@,@m2@,0)];
+	%% Equal( NL[ M8_1 ], Assign_Mul_UpperTriangular_SquaredMatrix_SquaredMatrix( U0_11, M8_1 ) )
+	@out0@[h(@nb@,@m0@,@m0@-(@it@+@nb@)), h(@m2@,@m2@,0)] = Assign_Mul_UpperTriangular_SquaredMatrix_SquaredMatrix_opt(@nb@, @m2@; @op0@[h(@nb@,@m0@,@m0@-(@it@+@nb@)), h(@nb@,@m0@,@m0@-(@it@+@nb@))]#UpperTriangular#, @out0@[h(@nb@,@m0@,@m0@-(@it@+@nb@)), h(@m2@,@m2@,0)]);
+};
+

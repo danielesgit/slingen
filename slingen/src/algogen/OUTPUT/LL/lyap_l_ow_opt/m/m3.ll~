@@ -1,0 +1,32 @@
+@T84@: triangular<@m@, u, tinout>;
+
+%% Equal( NL[ X_11 ], lyap_l_ow( L_11, X_11 ) )
+@out0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#Symmetric,LSMatAccess# = lyap_l_ow_opt(min(@nb@,@m@), min(@nb@,@m@); @op0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#LowerTriangular#, @out0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#Symmetric,LSMatAccess#);
+%% Equal( NL[ X_21 ], Plus( Times( Minus( L_21 ), X_11 ), X_21 ) )
+@out0@[h(@m@-(0+min(@nb@,@m@)),@m@,0+min(@nb@,@m@)), h(min(@nb@,@m@),@m@,0)] = -@op0@[h(@m@-(0+min(@nb@,@m@)),@m@,0+min(@nb@,@m@)), h(min(@nb@,@m@),@m@,0)] * @out0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#Symmetric,LSMatAccess# + @out0@[h(@m@-(0+min(@nb@,@m@)),@m@,0+min(@nb@,@m@)), h(min(@nb@,@m@),@m@,0)];
+For[ @it@; @nb@; @m@-(@nb@+1); @nb@ ]
+{
+	%% Equal( NL[ T84 ], Transpose( L_00 ) )
+	@T84@[h(@it@,@m@,0), h(@it@,@m@,0)]#UpperTriangular# = trans(@op0@[h(@it@,@m@,0), h(@it@,@m@,0)]#LowerTriangular#);
+	%% Equal( NL[ X_10 ], sylv_lup_ow( L_11, X_10, T84 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)] = sylv_lup_ow_opt(@nb@, @it@; @op0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#LowerTriangular#, @out0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)], @T84@[h(@it@,@m@,0), h(@it@,@m@,0)]#UpperTriangular#);
+	%% Equal( NL[ X_20 ], Plus( Times( Minus( L_21 ), X_10 ), X_20 ) )
+	@out0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@it@,@m@,0)] = -@op0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@nb@,@m@,@it@)] * @out0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)] + @out0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@it@,@m@,0)];
+	%% Equal( NL[ X_11 ], Plus( Times( Minus( L_10 ), Transpose( X_10 ) ), Times( Minus( X_10 ), Transpose( L_10 ) ), C_11 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#Symmetric,LSMatAccess# = -@op0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)] * trans(@out0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)]) + -@out0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)] * trans(@op0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)]) + @op1@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#Symmetric,LSMatAccess#;
+	%% Equal( NL[ X_11 ], lyap_l_ow( L_11, X_11 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#Symmetric,LSMatAccess# = lyap_l_ow_opt(@nb@, @nb@; @op0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#LowerTriangular#, @out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#Symmetric,LSMatAccess#);
+	%% Equal( NL[ X_21 ], Plus( Times( Minus( L_20 ), Transpose( X_10 ) ), C_21 ) )
+	@out0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@nb@,@m@,@it@)] = -@op0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@it@,@m@,0)] * trans(@out0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)]) + @op1@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@nb@,@m@,@it@)];
+	%% Equal( NL[ X_21 ], Plus( Times( Minus( L_21 ), X_11 ), X_21 ) )
+	@out0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@nb@,@m@,@it@)] = -@op0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@nb@,@m@,@it@)] * @out0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#Symmetric,LSMatAccess# + @out0@[h(@m@-(@it@+@nb@),@m@,@it@+@nb@), h(@nb@,@m@,@it@)];
+};
+%% Equal( NL[ T84 ], Transpose( L_00 ) )
+@T84@[h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)]#UpperTriangular# = trans(@op0@[h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)]#LowerTriangular#);
+%% Equal( NL[ X_10 ], sylv_lup_ow( L_11, X_10, T84 ) )
+@out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)] = sylv_lup_ow_opt(@nb@, max(@m@-@nb@, min(@m@,@nb@)); @op0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#LowerTriangular#, @out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)], @T84@[h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)]#UpperTriangular#);
+%% Equal( NL[ X_11 ], Plus( Times( Minus( L_10 ), Transpose( X_10 ) ), Times( Minus( X_10 ), Transpose( L_10 ) ), C_11 ) )
+@out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#Symmetric,LSMatAccess# = -@op0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)] * trans(@out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)]) + -@out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)] * trans(@op0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(max(@m@-@nb@, min(@m@,@nb@)),@m@,0)]) + @op1@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#Symmetric,LSMatAccess#;
+%% Equal( NL[ X_11 ], lyap_l_ow( L_11, X_11 ) )
+@out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#Symmetric,LSMatAccess# = lyap_l_ow_opt(@nb@, @nb@; @op0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#LowerTriangular#, @out0@[h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@))), h(@nb@,@m@,max(@m@-@nb@, min(@m@,@nb@)))]#Symmetric,LSMatAccess#);
+

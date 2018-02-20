@@ -1,0 +1,7 @@
+
+For[ @it@; 0; @m@-(@nb@); @nb@ ]
+{
+	%% Equal( NL[ B_1 ], rdiv_utu_ow( U, A_1 ) )
+	@out0@[h(@nb@,@m@,@m@-(@it@+@nb@)), h(@n@,@n@,0)] = rdiv_utu_ow_opt(@nb@, @n@; @op0@[h(@n@,@n@,0), h(@n@,@n@,0)]#UpperTriangular#, @op1@[h(@nb@,@m@,@m@-(@it@+@nb@)), h(@n@,@n@,0)]);
+};
+

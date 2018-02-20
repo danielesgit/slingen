@@ -1,0 +1,11 @@
+
+%% Equal( NL[ X_1 ], sylv_lup_ow( L_11, X_1, U ) )
+@out0@[h(min(@nb@,@m@),@m@,0), h(@n@,@n@,0)] = sylv_lup_ow_opt(min(@nb@,@m@), @n@; @op0@[h(min(@nb@,@m@),@m@,0), h(min(@nb@,@m@),@m@,0)]#LowerTriangular#, @out0@[h(min(@nb@,@m@),@m@,0), h(@n@,@n@,0)], @op2@[h(@n@,@n@,0), h(@n@,@n@,0)]#UpperTriangular#);
+For[ @it@; @nb@; @m@-(@nb@); @nb@ ]
+{
+	%% Equal( NL[ X_1 ], Plus( Times( Minus( L_10 ), X_0 ), C_1 ) )
+	@out0@[h(@nb@,@m@,@it@), h(@n@,@n@,0)] = -@op0@[h(@nb@,@m@,@it@), h(@it@,@m@,0)] * @out0@[h(@it@,@m@,0), h(@n@,@n@,0)] + @op1@[h(@nb@,@m@,@it@), h(@n@,@n@,0)];
+	%% Equal( NL[ X_1 ], sylv_lup_ow( L_11, X_1, U ) )
+	@out0@[h(@nb@,@m@,@it@), h(@n@,@n@,0)] = sylv_lup_ow_opt(@nb@, @n@; @op0@[h(@nb@,@m@,@it@), h(@nb@,@m@,@it@)]#LowerTriangular#, @out0@[h(@nb@,@m@,@it@), h(@n@,@n@,0)], @op2@[h(@n@,@n@,0), h(@n@,@n@,0)]#UpperTriangular#);
+};
+
