@@ -1,0 +1,43 @@
+# Configuration for local machine
+
+[string]
+
+compilepath =
+ldlibpath = 
+
+# CC
+cc = icpc
+
+# CFLAGS variable to pass to the compiler
+cflags     = -O3 -xsse2 -fargument-noalias -fno-alias -no-ipo -no-ip -no-vec
+cflags-vec = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip
+
+# LDFLAGS to pass to linker
+#ldflags =
+
+# ASMFLAGS for asm code generation
+#asmflags = -S -c -fsource-asm
+
+[code]
+
+# False == Run locally
+remote_execution = False
+
+#Include files list
+includefiles = [ "<x86intrin.h>" ]
+devcompatiblelibs = ['slingen', 'eigen', 'hand', 'mkl', 'polly', 'recsy', 'relapack']
+
+affinity = [3]
+
+# Peaks [f/c]
+peak = { 'x86': {'float': 2, 'double': 2 }, 'AVX': {'float': 16, 'double': 8 } }
+
+# Number of registers
+nr = 16
+
+# L1 Instruction cache params
+icachel1 = 32 * 1024 / 8
+
+[loadmod]
+arch = ('src.isas.x86', 'x86')
+isa = ('src.isas.avx', 'AVX')

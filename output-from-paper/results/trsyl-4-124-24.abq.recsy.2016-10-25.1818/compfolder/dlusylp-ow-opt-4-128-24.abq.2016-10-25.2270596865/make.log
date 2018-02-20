@@ -1,0 +1,7 @@
+CC = icpc
+LD = icpc
+CFLAGS = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST
+LDFLAGS =  -mkl -lifcore /opt/lib/librecsy.a /opt/lib/slicot.a
+ARCH = x86
+
+make -s -C /tmp/lgen/dlusylp-ow-opt-4-128-24.abq.2016-10-25.2270596865 CC="icpc" CFLAGS="-O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST" LD="icpc" LDFLAGS=" -mkl -lifcore /opt/lib/librecsy.a /opt/lib/slicot.a" ARCH="x86" all

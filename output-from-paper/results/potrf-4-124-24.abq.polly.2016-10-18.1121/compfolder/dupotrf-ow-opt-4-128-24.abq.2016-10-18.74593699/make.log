@@ -1,0 +1,7 @@
+CC = /home/danieles/sw/polly/llvm_build/bin/clang++
+LD = /home/danieles/sw/polly/llvm_build/bin/clang++
+CFLAGS = -O3 -mllvm -polly -mllvm -polly-vectorizer=stripmine -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST
+LDFLAGS =  
+ARCH = x86
+
+make -s -C /tmp/lgen/dupotrf-ow-opt-4-128-24.abq.2016-10-18.74593699 CC="/home/danieles/sw/polly/llvm_build/bin/clang++" CFLAGS="-O3 -mllvm -polly -mllvm -polly-vectorizer=stripmine -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST" LD="/home/danieles/sw/polly/llvm_build/bin/clang++" LDFLAGS=" " ARCH="x86" all

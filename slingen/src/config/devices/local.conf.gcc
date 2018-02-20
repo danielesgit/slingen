@@ -1,0 +1,43 @@
+# Configuration for local machine
+
+[string]
+
+compilepath =
+ldlibpath = 
+
+# CC
+cc = g++
+
+# CFLAGS variable to pass to the compiler
+cflags     =  -Ofast -m64 -msse2 -fno-tree-vectorize -fstrict-aliasing
+cflags-vec =   -Ofast -m64 -march=native -fstrict-aliasing -D__int64=int64_t
+
+# LDFLAGS to pass to linker
+#ldflags =
+
+# ASMFLAGS for asm code generation
+#asmflags = -S -c
+
+[code]
+
+# False == Run locally
+remote_execution = False
+
+#Include files list
+includefiles = [ "<x86intrin.h>" ]
+devcompatiblelibs = ['slingen', 'eigen', 'hand', 'mkl', 'polly', 'recsy', 'relapack']
+
+affinity = [3]
+
+# Peaks [f/c]
+peak = { 'x86': {'float': 2, 'double': 2 }, 'AVX': {'float': 16, 'double': 8 } }
+
+# Number of registers
+nr = 16
+
+# L1 Instruction cache params
+icachel1 = 32 * 1024 / 8
+
+[loadmod]
+arch = ('src.isas.x86', 'x86')
+isa = ('src.isas.avx', 'AVX')

@@ -1,0 +1,1120 @@
+  Starting compiler at 2017-08-17 14:17:28.628768 ----------------------------------------
+
+  Decl { {u'B': Matrix[B, (28, 4), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (4, 28), GenMatAccess], u'U0': UpperTriangular[U0, (4, 4), GenMatAccess], u'M5': Matrix[M5, (4, 28), GenMatAccess], u'M4': Symmetric[M4, (4, 4), USMatAccess], u'M7': Matrix[M7, (4, 28), GenMatAccess], u'M6': Matrix[M6, (4, 28), GenMatAccess], u'M1': Matrix[M1, (4, 28), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (4, 4), USMatAccess], u'M2': Matrix[M2, (28, 4), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (4, 4), USMatAccess], u'U': UpperTriangular[U, (4, 4), GenMatAccess], u'M8': Matrix[M8, (4, 28), GenMatAccess], u'v0': Matrix[v0, (4, 1), GenMatAccess], u'u': Matrix[u, (4, 1), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'v2': Matrix[v2, (4, 1), GenMatAccess], u'v1': Matrix[v1, (4, 1), GenMatAccess], u'v3': Matrix[v3, (4, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'v4': Matrix[v4, (4, 1), GenMatAccess], u'z': Matrix[z, (4, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y[28,1] = ( ( F[28,28] * x[28,1] ) + ( B[28,4] * u[4,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: M0[28,28] = ( F[28,28] * P[28,28] )
+Eq.ann: {}
+Entry 2:
+Eq: Y[28,28] = ( ( M0[28,28] * T( F[28,28] ) ) + Q[28,28] )
+Eq.ann: {}
+Entry 3:
+Eq: v0[4,1] = ( z[4,1] - ( H[4,28] * y[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: M1[4,28] = ( H[4,28] * Y[28,28] )
+Eq.ann: {}
+Entry 5:
+Eq: M2[28,4] = ( Y[28,28] * T( H[4,28] ) )
+Eq.ann: {}
+Entry 6:
+Eq: M3[4,4] = ( ( M1[4,28] * T( H[4,28] ) ) + R[4,4] )
+Eq.ann: {}
+Entry 7:
+Eq: ( T( U[4,4] ) * U[4,4] ) = M4[4,4]
+Eq.ann: {}
+Entry 8:
+Eq: ( T( U0[4,4] ) * v2[4,1] ) = v1[4,1]
+Eq.ann: {}
+Entry 9:
+Eq: ( U0[4,4] * v4[4,1] ) = v3[4,1]
+Eq.ann: {}
+Entry 10:
+Eq: ( T( U0[4,4] ) * M6[4,28] ) = M5[4,28]
+Eq.ann: {}
+Entry 11:
+Eq: ( U0[4,4] * M8[4,28] ) = M7[4,28]
+Eq.ann: {}
+Entry 12:
+Eq: x[28,1] = ( y[28,1] + ( M2[28,4] * v0[4,1] ) )
+Eq.ann: {}
+Entry 13:
+Eq: P[28,28] = ( Y[28,28] - ( M2[28,4] * M1[4,28] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  4, Decl { {u'B': Matrix[B, (28, 4), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (4, 28), GenMatAccess], u'U0': UpperTriangular[U0, (4, 4), GenMatAccess], u'M5': Matrix[M5, (4, 28), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'M7': Matrix[M7, (4, 28), GenMatAccess], u'M6': Matrix[M6, (4, 28), GenMatAccess], u'v4': Matrix[v4, (4, 1), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (4, 4), USMatAccess], u'M2': Matrix[M2, (28, 4), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (4, 4), USMatAccess], u'U': UpperTriangular[U, (4, 4), GenMatAccess], u'M8': Matrix[M8, (4, 28), GenMatAccess], u'v0': Matrix[v0, (4, 1), GenMatAccess], u'u': Matrix[u, (4, 1), GenMatAccess], u'M4': Symmetric[M4, (4, 4), USMatAccess], u'v2': Matrix[v2, (4, 1), GenMatAccess], u'v1': Matrix[v1, (4, 1), GenMatAccess], u'v3': Matrix[v3, (4, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'M1': Matrix[M1, (4, 28), GenMatAccess], u'z': Matrix[z, (4, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {'part_schemes': {'Assign_Mul_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt': {'m0': 'm01.ll'}, 'ldiv_utn_ow_opt': {'m': 'm4.ll', 'n': 'n1.ll'}, 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}}, 'cl1ck_v': 0, 'variant_tag': 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt_m01_Assign_Mul_UpperTriangular_Matrix_Matrix_opt_m04_m21_ldiv_utn_ow_opt_m4_n1'}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Eq: Tile( (1, 1), y[28,1] ) = ( ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), x[28,1] ) ) + ( Tile( (1, 1), B[28,4] ) * Tile( (1, 1), u[4,1] ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), M0[28,28] ) = ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), P[28,28] ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Y[28,28] ) = ( ( Tile( (1, 1), M0[28,28] ) * T( Tile( (1, 1), F[28,28] ) ) ) + Tile( (1, 1), Q[28,28] ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), v0[4,1] ) = ( Tile( (1, 1), z[4,1] ) - ( Tile( (1, 1), H[4,28] ) * Tile( (1, 1), y[28,1] ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), M1[4,28] ) = ( Tile( (1, 1), H[4,28] ) * Tile( (1, 1), Y[28,28] ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), M2[28,4] ) = ( Tile( (1, 1), Y[28,28] ) * T( Tile( (1, 1), H[4,28] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), M3[4,4] ) = ( ( Tile( (1, 1), M1[4,28] ) * T( Tile( (1, 1), H[4,28] ) ) ) + Tile( (1, 1), R[4,4] ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), G(h(1, 4, 0), U[4,4],h(1, 4, 0)) ) = Sqrt( Tile( (1, 1), G(h(1, 4, 0), U[4,4],h(1, 4, 0)) ) )
+Eq.ann: {}
+Entry 8:
+For_{fi35;1;3;1} ( Entry 0:
+For_{fi60;0;fi35 - 2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 4, fi60), U[4,4],h(1, 4, fi35)) ) = ( Tile( (1, 1), G(h(1, 4, fi60), U[4,4],h(1, 4, fi35)) ) Div Tile( (1, 1), G(h(1, 4, fi60), U[4,4],h(1, 4, fi60)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(fi35 - fi60 - 1, 4, fi60 + 1), U[4,4],h(1, 4, fi35)) ) = ( Tile( (1, 1), G(h(fi35 - fi60 - 1, 4, fi60 + 1), U[4,4],h(1, 4, fi35)) ) - ( T( Tile( (1, 1), G(h(1, 4, fi60), U[4,4],h(fi35 - fi60 - 1, 4, fi60 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 4, fi60), U[4,4],h(1, 4, fi35)) ) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(1, 4, Max(0, fi35 - 1)), U[4,4],h(1, 4, fi35)) ) = ( Tile( (1, 1), G(h(1, 4, Max(0, fi35 - 1)), U[4,4],h(1, 4, fi35)) ) Div Tile( (1, 1), G(h(1, 4, Max(0, fi35 - 1)), U[4,4],h(1, 4, Max(0, fi35 - 1))) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), G(h(1, 4, fi35), U[4,4],h(1, 4, fi35)) ) = ( Tile( (1, 1), G(h(1, 4, fi35), M4[4,4],h(1, 4, fi35)) ) - ( T( Tile( (1, 1), G(h(fi35, 4, 0), U[4,4],h(1, 4, fi35)) ) ) * Tile( (1, 1), G(h(fi35, 4, 0), U[4,4],h(1, 4, fi35)) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), G(h(1, 4, fi35), U[4,4],h(1, 4, fi35)) ) = Sqrt( Tile( (1, 1), G(h(1, 4, fi35), U[4,4],h(1, 4, fi35)) ) )
+Eq.ann: {}
+ )Entry 9:
+For_{fi92;0;2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 4, fi92), v2[4,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 4, fi92), v2[4,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 4, fi92), U0[4,4],h(1, 4, fi92)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi92 + 3, 4, fi92 + 1), v2[4,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi92 + 3, 4, fi92 + 1), v2[4,1],h(1, 1, 0)) ) - ( T( Tile( (1, 1), G(h(1, 4, fi92), U0[4,4],h(-fi92 + 3, 4, fi92 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 4, fi92), v2[4,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 10:
+Eq: Tile( (1, 1), G(h(1, 4, 3), v2[4,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 4, 3), v2[4,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 4, 3), U0[4,4],h(1, 4, 3)) ) )
+Eq.ann: {}
+Entry 11:
+For_{fi121;0;2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 4, -fi121 + 3), v4[4,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 4, -fi121 + 3), v4[4,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 4, -fi121 + 3), U0[4,4],h(1, 4, -fi121 + 3)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi121 + 3, 4, 0), v4[4,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi121 + 3, 4, 0), v4[4,1],h(1, 1, 0)) ) - ( Tile( (1, 1), G(h(-fi121 + 3, 4, 0), U0[4,4],h(1, 4, -fi121 + 3)) ) Kro Tile( (1, 1), G(h(1, 4, -fi121 + 3), v4[4,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 12:
+Eq: Tile( (1, 1), G(h(1, 4, 0), v4[4,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 4, 0), v4[4,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 4, 0), U0[4,4],h(1, 4, 0)) ) )
+Eq.ann: {}
+Entry 13:
+For_{fi150;0;2;1} ( Entry 0:
+For_{fi169;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 4, fi150), M6[4,28],h(1, 28, fi169)) ) = ( Tile( (1, 1), G(h(1, 4, fi150), M6[4,28],h(1, 28, fi169)) ) Div Tile( (1, 1), G(h(1, 4, fi150), U0[4,4],h(1, 4, fi150)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi150 + 3, 4, fi150 + 1), M6[4,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi150 + 3, 4, fi150 + 1), M6[4,28],h(28, 28, 0)) ) - ( T( Tile( (1, 1), G(h(1, 4, fi150), U0[4,4],h(-fi150 + 3, 4, fi150 + 1)) ) ) * Tile( (1, 1), G(h(1, 4, fi150), M6[4,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 14:
+For_{fi180;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 4, 3), M6[4,28],h(1, 28, fi180)) ) = ( Tile( (1, 1), G(h(1, 4, 3), M6[4,28],h(1, 28, fi180)) ) Div Tile( (1, 1), G(h(1, 4, 3), U0[4,4],h(1, 4, 3)) ) )
+Eq.ann: {}
+ )Entry 15:
+For_{fi191;0;2;1} ( Entry 0:
+For_{fi210;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 4, -fi191 + 3), M8[4,28],h(1, 28, fi210)) ) = ( Tile( (1, 1), G(h(1, 4, -fi191 + 3), M8[4,28],h(1, 28, fi210)) ) Div Tile( (1, 1), G(h(1, 4, -fi191 + 3), U0[4,4],h(1, 4, -fi191 + 3)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi191 + 3, 4, 0), M8[4,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi191 + 3, 4, 0), M8[4,28],h(28, 28, 0)) ) - ( Tile( (1, 1), G(h(-fi191 + 3, 4, 0), U0[4,4],h(1, 4, -fi191 + 3)) ) * Tile( (1, 1), G(h(1, 4, -fi191 + 3), M8[4,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 16:
+For_{fi221;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 4, 0), M8[4,28],h(1, 28, fi221)) ) = ( Tile( (1, 1), G(h(1, 4, 0), M8[4,28],h(1, 28, fi221)) ) Div Tile( (1, 1), G(h(1, 4, 0), U0[4,4],h(1, 4, 0)) ) )
+Eq.ann: {}
+ )Entry 17:
+Eq: Tile( (1, 1), x[28,1] ) = ( Tile( (1, 1), y[28,1] ) + ( Tile( (1, 1), M2[28,4] ) * Tile( (1, 1), v0[4,1] ) ) )
+Eq.ann: {}
+Entry 18:
+Eq: Tile( (1, 1), P[28,28] ) = ( Tile( (1, 1), Y[28,28] ) - ( Tile( (1, 1), M2[28,4] ) * Tile( (1, 1), M1[4,28] ) ) )
+Eq.ann: {}
+, 0.850550734479 f/c -- folder: /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.1399238779
+
+
+
+  Compiling took 0:00:50.301588 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-17 14:18:20.297113 ----------------------------------------
+
+  Decl { {u'B': Matrix[B, (28, 8), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (8, 28), GenMatAccess], u'U0': UpperTriangular[U0, (8, 8), GenMatAccess], u'M5': Matrix[M5, (8, 28), GenMatAccess], u'M4': Symmetric[M4, (8, 8), USMatAccess], u'M7': Matrix[M7, (8, 28), GenMatAccess], u'M6': Matrix[M6, (8, 28), GenMatAccess], u'M1': Matrix[M1, (8, 28), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (8, 8), USMatAccess], u'M2': Matrix[M2, (28, 8), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (8, 8), USMatAccess], u'U': UpperTriangular[U, (8, 8), GenMatAccess], u'M8': Matrix[M8, (8, 28), GenMatAccess], u'v0': Matrix[v0, (8, 1), GenMatAccess], u'u': Matrix[u, (8, 1), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'v2': Matrix[v2, (8, 1), GenMatAccess], u'v1': Matrix[v1, (8, 1), GenMatAccess], u'v3': Matrix[v3, (8, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'v4': Matrix[v4, (8, 1), GenMatAccess], u'z': Matrix[z, (8, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y[28,1] = ( ( F[28,28] * x[28,1] ) + ( B[28,8] * u[8,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: M0[28,28] = ( F[28,28] * P[28,28] )
+Eq.ann: {}
+Entry 2:
+Eq: Y[28,28] = ( ( M0[28,28] * T( F[28,28] ) ) + Q[28,28] )
+Eq.ann: {}
+Entry 3:
+Eq: v0[8,1] = ( z[8,1] - ( H[8,28] * y[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: M1[8,28] = ( H[8,28] * Y[28,28] )
+Eq.ann: {}
+Entry 5:
+Eq: M2[28,8] = ( Y[28,28] * T( H[8,28] ) )
+Eq.ann: {}
+Entry 6:
+Eq: M3[8,8] = ( ( M1[8,28] * T( H[8,28] ) ) + R[8,8] )
+Eq.ann: {}
+Entry 7:
+Eq: ( T( U[8,8] ) * U[8,8] ) = M4[8,8]
+Eq.ann: {}
+Entry 8:
+Eq: ( T( U0[8,8] ) * v2[8,1] ) = v1[8,1]
+Eq.ann: {}
+Entry 9:
+Eq: ( U0[8,8] * v4[8,1] ) = v3[8,1]
+Eq.ann: {}
+Entry 10:
+Eq: ( T( U0[8,8] ) * M6[8,28] ) = M5[8,28]
+Eq.ann: {}
+Entry 11:
+Eq: ( U0[8,8] * M8[8,28] ) = M7[8,28]
+Eq.ann: {}
+Entry 12:
+Eq: x[28,1] = ( y[28,1] + ( M2[28,8] * v0[8,1] ) )
+Eq.ann: {}
+Entry 13:
+Eq: P[28,28] = ( Y[28,28] - ( M2[28,8] * M1[8,28] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  8, Decl { {u'B': Matrix[B, (28, 8), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (8, 28), GenMatAccess], u'U0': UpperTriangular[U0, (8, 8), GenMatAccess], u'M5': Matrix[M5, (8, 28), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'M7': Matrix[M7, (8, 28), GenMatAccess], u'M6': Matrix[M6, (8, 28), GenMatAccess], u'v4': Matrix[v4, (8, 1), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (8, 8), USMatAccess], u'M2': Matrix[M2, (28, 8), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (8, 8), USMatAccess], u'U': UpperTriangular[U, (8, 8), GenMatAccess], u'M8': Matrix[M8, (8, 28), GenMatAccess], u'v0': Matrix[v0, (8, 1), GenMatAccess], u'u': Matrix[u, (8, 1), GenMatAccess], u'M4': Symmetric[M4, (8, 8), USMatAccess], u'v2': Matrix[v2, (8, 1), GenMatAccess], u'v1': Matrix[v1, (8, 1), GenMatAccess], u'v3': Matrix[v3, (8, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'M1': Matrix[M1, (8, 28), GenMatAccess], u'z': Matrix[z, (8, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {'part_schemes': {'Assign_Mul_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt': {'m0': 'm01.ll'}, 'ldiv_utn_ow_opt': {'m': 'm4.ll', 'n': 'n1.ll'}, 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}}, 'cl1ck_v': 0, 'variant_tag': 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt_m01_Assign_Mul_UpperTriangular_Matrix_Matrix_opt_m04_m21_ldiv_utn_ow_opt_m4_n1'}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Eq: Tile( (1, 1), y[28,1] ) = ( ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), x[28,1] ) ) + ( Tile( (1, 1), B[28,8] ) * Tile( (1, 1), u[8,1] ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), M0[28,28] ) = ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), P[28,28] ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Y[28,28] ) = ( ( Tile( (1, 1), M0[28,28] ) * T( Tile( (1, 1), F[28,28] ) ) ) + Tile( (1, 1), Q[28,28] ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), v0[8,1] ) = ( Tile( (1, 1), z[8,1] ) - ( Tile( (1, 1), H[8,28] ) * Tile( (1, 1), y[28,1] ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), M1[8,28] ) = ( Tile( (1, 1), H[8,28] ) * Tile( (1, 1), Y[28,28] ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), M2[28,8] ) = ( Tile( (1, 1), Y[28,28] ) * T( Tile( (1, 1), H[8,28] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), M3[8,8] ) = ( ( Tile( (1, 1), M1[8,28] ) * T( Tile( (1, 1), H[8,28] ) ) ) + Tile( (1, 1), R[8,8] ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), G(h(1, 8, 0), U[8,8],h(1, 8, 0)) ) = Sqrt( Tile( (1, 1), G(h(1, 8, 0), U[8,8],h(1, 8, 0)) ) )
+Eq.ann: {}
+Entry 8:
+For_{fi35;1;7;1} ( Entry 0:
+For_{fi60;0;fi35 - 2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 8, fi60), U[8,8],h(1, 8, fi35)) ) = ( Tile( (1, 1), G(h(1, 8, fi60), U[8,8],h(1, 8, fi35)) ) Div Tile( (1, 1), G(h(1, 8, fi60), U[8,8],h(1, 8, fi60)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(fi35 - fi60 - 1, 8, fi60 + 1), U[8,8],h(1, 8, fi35)) ) = ( Tile( (1, 1), G(h(fi35 - fi60 - 1, 8, fi60 + 1), U[8,8],h(1, 8, fi35)) ) - ( T( Tile( (1, 1), G(h(1, 8, fi60), U[8,8],h(fi35 - fi60 - 1, 8, fi60 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 8, fi60), U[8,8],h(1, 8, fi35)) ) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(1, 8, Max(0, fi35 - 1)), U[8,8],h(1, 8, fi35)) ) = ( Tile( (1, 1), G(h(1, 8, Max(0, fi35 - 1)), U[8,8],h(1, 8, fi35)) ) Div Tile( (1, 1), G(h(1, 8, Max(0, fi35 - 1)), U[8,8],h(1, 8, Max(0, fi35 - 1))) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), G(h(1, 8, fi35), U[8,8],h(1, 8, fi35)) ) = ( Tile( (1, 1), G(h(1, 8, fi35), M4[8,8],h(1, 8, fi35)) ) - ( T( Tile( (1, 1), G(h(fi35, 8, 0), U[8,8],h(1, 8, fi35)) ) ) * Tile( (1, 1), G(h(fi35, 8, 0), U[8,8],h(1, 8, fi35)) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), G(h(1, 8, fi35), U[8,8],h(1, 8, fi35)) ) = Sqrt( Tile( (1, 1), G(h(1, 8, fi35), U[8,8],h(1, 8, fi35)) ) )
+Eq.ann: {}
+ )Entry 9:
+For_{fi92;0;6;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 8, fi92), v2[8,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 8, fi92), v2[8,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 8, fi92), U0[8,8],h(1, 8, fi92)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi92 + 7, 8, fi92 + 1), v2[8,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi92 + 7, 8, fi92 + 1), v2[8,1],h(1, 1, 0)) ) - ( T( Tile( (1, 1), G(h(1, 8, fi92), U0[8,8],h(-fi92 + 7, 8, fi92 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 8, fi92), v2[8,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 10:
+Eq: Tile( (1, 1), G(h(1, 8, 7), v2[8,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 8, 7), v2[8,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 8, 7), U0[8,8],h(1, 8, 7)) ) )
+Eq.ann: {}
+Entry 11:
+For_{fi121;0;6;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 8, -fi121 + 7), v4[8,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 8, -fi121 + 7), v4[8,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 8, -fi121 + 7), U0[8,8],h(1, 8, -fi121 + 7)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi121 + 7, 8, 0), v4[8,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi121 + 7, 8, 0), v4[8,1],h(1, 1, 0)) ) - ( Tile( (1, 1), G(h(-fi121 + 7, 8, 0), U0[8,8],h(1, 8, -fi121 + 7)) ) Kro Tile( (1, 1), G(h(1, 8, -fi121 + 7), v4[8,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 12:
+Eq: Tile( (1, 1), G(h(1, 8, 0), v4[8,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 8, 0), v4[8,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 8, 0), U0[8,8],h(1, 8, 0)) ) )
+Eq.ann: {}
+Entry 13:
+For_{fi150;0;6;1} ( Entry 0:
+For_{fi169;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 8, fi150), M6[8,28],h(1, 28, fi169)) ) = ( Tile( (1, 1), G(h(1, 8, fi150), M6[8,28],h(1, 28, fi169)) ) Div Tile( (1, 1), G(h(1, 8, fi150), U0[8,8],h(1, 8, fi150)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi150 + 7, 8, fi150 + 1), M6[8,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi150 + 7, 8, fi150 + 1), M6[8,28],h(28, 28, 0)) ) - ( T( Tile( (1, 1), G(h(1, 8, fi150), U0[8,8],h(-fi150 + 7, 8, fi150 + 1)) ) ) * Tile( (1, 1), G(h(1, 8, fi150), M6[8,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 14:
+For_{fi180;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 8, 7), M6[8,28],h(1, 28, fi180)) ) = ( Tile( (1, 1), G(h(1, 8, 7), M6[8,28],h(1, 28, fi180)) ) Div Tile( (1, 1), G(h(1, 8, 7), U0[8,8],h(1, 8, 7)) ) )
+Eq.ann: {}
+ )Entry 15:
+For_{fi191;0;6;1} ( Entry 0:
+For_{fi210;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 8, -fi191 + 7), M8[8,28],h(1, 28, fi210)) ) = ( Tile( (1, 1), G(h(1, 8, -fi191 + 7), M8[8,28],h(1, 28, fi210)) ) Div Tile( (1, 1), G(h(1, 8, -fi191 + 7), U0[8,8],h(1, 8, -fi191 + 7)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi191 + 7, 8, 0), M8[8,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi191 + 7, 8, 0), M8[8,28],h(28, 28, 0)) ) - ( Tile( (1, 1), G(h(-fi191 + 7, 8, 0), U0[8,8],h(1, 8, -fi191 + 7)) ) * Tile( (1, 1), G(h(1, 8, -fi191 + 7), M8[8,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 16:
+For_{fi221;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 8, 0), M8[8,28],h(1, 28, fi221)) ) = ( Tile( (1, 1), G(h(1, 8, 0), M8[8,28],h(1, 28, fi221)) ) Div Tile( (1, 1), G(h(1, 8, 0), U0[8,8],h(1, 8, 0)) ) )
+Eq.ann: {}
+ )Entry 17:
+Eq: Tile( (1, 1), x[28,1] ) = ( Tile( (1, 1), y[28,1] ) + ( Tile( (1, 1), M2[28,8] ) * Tile( (1, 1), v0[8,1] ) ) )
+Eq.ann: {}
+Entry 18:
+Eq: Tile( (1, 1), P[28,28] ) = ( Tile( (1, 1), Y[28,28] ) - ( Tile( (1, 1), M2[28,8] ) * Tile( (1, 1), M1[8,28] ) ) )
+Eq.ann: {}
+, 0.82181555502 f/c -- folder: /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.1399238779
+
+
+
+  Compiling took 0:00:50.799300 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-17 14:19:12.929252 ----------------------------------------
+
+  Decl { {u'B': Matrix[B, (28, 12), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (12, 28), GenMatAccess], u'U0': UpperTriangular[U0, (12, 12), GenMatAccess], u'M5': Matrix[M5, (12, 28), GenMatAccess], u'M4': Symmetric[M4, (12, 12), USMatAccess], u'M7': Matrix[M7, (12, 28), GenMatAccess], u'M6': Matrix[M6, (12, 28), GenMatAccess], u'M1': Matrix[M1, (12, 28), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (12, 12), USMatAccess], u'M2': Matrix[M2, (28, 12), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (12, 12), USMatAccess], u'U': UpperTriangular[U, (12, 12), GenMatAccess], u'M8': Matrix[M8, (12, 28), GenMatAccess], u'v0': Matrix[v0, (12, 1), GenMatAccess], u'u': Matrix[u, (12, 1), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'v2': Matrix[v2, (12, 1), GenMatAccess], u'v1': Matrix[v1, (12, 1), GenMatAccess], u'v3': Matrix[v3, (12, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'v4': Matrix[v4, (12, 1), GenMatAccess], u'z': Matrix[z, (12, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y[28,1] = ( ( F[28,28] * x[28,1] ) + ( B[28,12] * u[12,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: M0[28,28] = ( F[28,28] * P[28,28] )
+Eq.ann: {}
+Entry 2:
+Eq: Y[28,28] = ( ( M0[28,28] * T( F[28,28] ) ) + Q[28,28] )
+Eq.ann: {}
+Entry 3:
+Eq: v0[12,1] = ( z[12,1] - ( H[12,28] * y[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: M1[12,28] = ( H[12,28] * Y[28,28] )
+Eq.ann: {}
+Entry 5:
+Eq: M2[28,12] = ( Y[28,28] * T( H[12,28] ) )
+Eq.ann: {}
+Entry 6:
+Eq: M3[12,12] = ( ( M1[12,28] * T( H[12,28] ) ) + R[12,12] )
+Eq.ann: {}
+Entry 7:
+Eq: ( T( U[12,12] ) * U[12,12] ) = M4[12,12]
+Eq.ann: {}
+Entry 8:
+Eq: ( T( U0[12,12] ) * v2[12,1] ) = v1[12,1]
+Eq.ann: {}
+Entry 9:
+Eq: ( U0[12,12] * v4[12,1] ) = v3[12,1]
+Eq.ann: {}
+Entry 10:
+Eq: ( T( U0[12,12] ) * M6[12,28] ) = M5[12,28]
+Eq.ann: {}
+Entry 11:
+Eq: ( U0[12,12] * M8[12,28] ) = M7[12,28]
+Eq.ann: {}
+Entry 12:
+Eq: x[28,1] = ( y[28,1] + ( M2[28,12] * v0[12,1] ) )
+Eq.ann: {}
+Entry 13:
+Eq: P[28,28] = ( Y[28,28] - ( M2[28,12] * M1[12,28] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  12, Decl { {u'B': Matrix[B, (28, 12), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (12, 28), GenMatAccess], u'U0': UpperTriangular[U0, (12, 12), GenMatAccess], u'M5': Matrix[M5, (12, 28), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'M7': Matrix[M7, (12, 28), GenMatAccess], u'M6': Matrix[M6, (12, 28), GenMatAccess], u'v4': Matrix[v4, (12, 1), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (12, 12), USMatAccess], u'M2': Matrix[M2, (28, 12), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (12, 12), USMatAccess], u'U': UpperTriangular[U, (12, 12), GenMatAccess], u'M8': Matrix[M8, (12, 28), GenMatAccess], u'v0': Matrix[v0, (12, 1), GenMatAccess], u'u': Matrix[u, (12, 1), GenMatAccess], u'M4': Symmetric[M4, (12, 12), USMatAccess], u'v2': Matrix[v2, (12, 1), GenMatAccess], u'v1': Matrix[v1, (12, 1), GenMatAccess], u'v3': Matrix[v3, (12, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'M1': Matrix[M1, (12, 28), GenMatAccess], u'z': Matrix[z, (12, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {'part_schemes': {'Assign_Mul_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt': {'m0': 'm01.ll'}, 'ldiv_utn_ow_opt': {'m': 'm4.ll', 'n': 'n1.ll'}, 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}}, 'cl1ck_v': 0, 'variant_tag': 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt_m01_Assign_Mul_UpperTriangular_Matrix_Matrix_opt_m04_m21_ldiv_utn_ow_opt_m4_n1'}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Eq: Tile( (1, 1), y[28,1] ) = ( ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), x[28,1] ) ) + ( Tile( (1, 1), B[28,12] ) * Tile( (1, 1), u[12,1] ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), M0[28,28] ) = ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), P[28,28] ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Y[28,28] ) = ( ( Tile( (1, 1), M0[28,28] ) * T( Tile( (1, 1), F[28,28] ) ) ) + Tile( (1, 1), Q[28,28] ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), v0[12,1] ) = ( Tile( (1, 1), z[12,1] ) - ( Tile( (1, 1), H[12,28] ) * Tile( (1, 1), y[28,1] ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), M1[12,28] ) = ( Tile( (1, 1), H[12,28] ) * Tile( (1, 1), Y[28,28] ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), M2[28,12] ) = ( Tile( (1, 1), Y[28,28] ) * T( Tile( (1, 1), H[12,28] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), M3[12,12] ) = ( ( Tile( (1, 1), M1[12,28] ) * T( Tile( (1, 1), H[12,28] ) ) ) + Tile( (1, 1), R[12,12] ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), G(h(1, 12, 0), U[12,12],h(1, 12, 0)) ) = Sqrt( Tile( (1, 1), G(h(1, 12, 0), U[12,12],h(1, 12, 0)) ) )
+Eq.ann: {}
+Entry 8:
+For_{fi35;1;11;1} ( Entry 0:
+For_{fi60;0;fi35 - 2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 12, fi60), U[12,12],h(1, 12, fi35)) ) = ( Tile( (1, 1), G(h(1, 12, fi60), U[12,12],h(1, 12, fi35)) ) Div Tile( (1, 1), G(h(1, 12, fi60), U[12,12],h(1, 12, fi60)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(fi35 - fi60 - 1, 12, fi60 + 1), U[12,12],h(1, 12, fi35)) ) = ( Tile( (1, 1), G(h(fi35 - fi60 - 1, 12, fi60 + 1), U[12,12],h(1, 12, fi35)) ) - ( T( Tile( (1, 1), G(h(1, 12, fi60), U[12,12],h(fi35 - fi60 - 1, 12, fi60 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 12, fi60), U[12,12],h(1, 12, fi35)) ) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(1, 12, Max(0, fi35 - 1)), U[12,12],h(1, 12, fi35)) ) = ( Tile( (1, 1), G(h(1, 12, Max(0, fi35 - 1)), U[12,12],h(1, 12, fi35)) ) Div Tile( (1, 1), G(h(1, 12, Max(0, fi35 - 1)), U[12,12],h(1, 12, Max(0, fi35 - 1))) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), G(h(1, 12, fi35), U[12,12],h(1, 12, fi35)) ) = ( Tile( (1, 1), G(h(1, 12, fi35), M4[12,12],h(1, 12, fi35)) ) - ( T( Tile( (1, 1), G(h(fi35, 12, 0), U[12,12],h(1, 12, fi35)) ) ) * Tile( (1, 1), G(h(fi35, 12, 0), U[12,12],h(1, 12, fi35)) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), G(h(1, 12, fi35), U[12,12],h(1, 12, fi35)) ) = Sqrt( Tile( (1, 1), G(h(1, 12, fi35), U[12,12],h(1, 12, fi35)) ) )
+Eq.ann: {}
+ )Entry 9:
+For_{fi92;0;10;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 12, fi92), v2[12,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 12, fi92), v2[12,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 12, fi92), U0[12,12],h(1, 12, fi92)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi92 + 11, 12, fi92 + 1), v2[12,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi92 + 11, 12, fi92 + 1), v2[12,1],h(1, 1, 0)) ) - ( T( Tile( (1, 1), G(h(1, 12, fi92), U0[12,12],h(-fi92 + 11, 12, fi92 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 12, fi92), v2[12,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 10:
+Eq: Tile( (1, 1), G(h(1, 12, 11), v2[12,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 12, 11), v2[12,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 12, 11), U0[12,12],h(1, 12, 11)) ) )
+Eq.ann: {}
+Entry 11:
+For_{fi121;0;10;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 12, -fi121 + 11), v4[12,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 12, -fi121 + 11), v4[12,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 12, -fi121 + 11), U0[12,12],h(1, 12, -fi121 + 11)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi121 + 11, 12, 0), v4[12,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi121 + 11, 12, 0), v4[12,1],h(1, 1, 0)) ) - ( Tile( (1, 1), G(h(-fi121 + 11, 12, 0), U0[12,12],h(1, 12, -fi121 + 11)) ) Kro Tile( (1, 1), G(h(1, 12, -fi121 + 11), v4[12,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 12:
+Eq: Tile( (1, 1), G(h(1, 12, 0), v4[12,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 12, 0), v4[12,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 12, 0), U0[12,12],h(1, 12, 0)) ) )
+Eq.ann: {}
+Entry 13:
+For_{fi150;0;10;1} ( Entry 0:
+For_{fi169;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 12, fi150), M6[12,28],h(1, 28, fi169)) ) = ( Tile( (1, 1), G(h(1, 12, fi150), M6[12,28],h(1, 28, fi169)) ) Div Tile( (1, 1), G(h(1, 12, fi150), U0[12,12],h(1, 12, fi150)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi150 + 11, 12, fi150 + 1), M6[12,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi150 + 11, 12, fi150 + 1), M6[12,28],h(28, 28, 0)) ) - ( T( Tile( (1, 1), G(h(1, 12, fi150), U0[12,12],h(-fi150 + 11, 12, fi150 + 1)) ) ) * Tile( (1, 1), G(h(1, 12, fi150), M6[12,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 14:
+For_{fi180;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 12, 11), M6[12,28],h(1, 28, fi180)) ) = ( Tile( (1, 1), G(h(1, 12, 11), M6[12,28],h(1, 28, fi180)) ) Div Tile( (1, 1), G(h(1, 12, 11), U0[12,12],h(1, 12, 11)) ) )
+Eq.ann: {}
+ )Entry 15:
+For_{fi191;0;10;1} ( Entry 0:
+For_{fi210;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 12, -fi191 + 11), M8[12,28],h(1, 28, fi210)) ) = ( Tile( (1, 1), G(h(1, 12, -fi191 + 11), M8[12,28],h(1, 28, fi210)) ) Div Tile( (1, 1), G(h(1, 12, -fi191 + 11), U0[12,12],h(1, 12, -fi191 + 11)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi191 + 11, 12, 0), M8[12,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi191 + 11, 12, 0), M8[12,28],h(28, 28, 0)) ) - ( Tile( (1, 1), G(h(-fi191 + 11, 12, 0), U0[12,12],h(1, 12, -fi191 + 11)) ) * Tile( (1, 1), G(h(1, 12, -fi191 + 11), M8[12,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 16:
+For_{fi221;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 12, 0), M8[12,28],h(1, 28, fi221)) ) = ( Tile( (1, 1), G(h(1, 12, 0), M8[12,28],h(1, 28, fi221)) ) Div Tile( (1, 1), G(h(1, 12, 0), U0[12,12],h(1, 12, 0)) ) )
+Eq.ann: {}
+ )Entry 17:
+Eq: Tile( (1, 1), x[28,1] ) = ( Tile( (1, 1), y[28,1] ) + ( Tile( (1, 1), M2[28,12] ) * Tile( (1, 1), v0[12,1] ) ) )
+Eq.ann: {}
+Entry 18:
+Eq: Tile( (1, 1), P[28,28] ) = ( Tile( (1, 1), Y[28,28] ) - ( Tile( (1, 1), M2[28,12] ) * Tile( (1, 1), M1[12,28] ) ) )
+Eq.ann: {}
+, 0.782535623387 f/c -- folder: /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.1399238779
+
+
+
+  Compiling took 0:00:50.987877 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-17 14:20:05.270470 ----------------------------------------
+
+  Decl { {u'B': Matrix[B, (28, 16), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (16, 28), GenMatAccess], u'U0': UpperTriangular[U0, (16, 16), GenMatAccess], u'M5': Matrix[M5, (16, 28), GenMatAccess], u'M4': Symmetric[M4, (16, 16), USMatAccess], u'M7': Matrix[M7, (16, 28), GenMatAccess], u'M6': Matrix[M6, (16, 28), GenMatAccess], u'M1': Matrix[M1, (16, 28), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (16, 16), USMatAccess], u'M2': Matrix[M2, (28, 16), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (16, 16), USMatAccess], u'U': UpperTriangular[U, (16, 16), GenMatAccess], u'M8': Matrix[M8, (16, 28), GenMatAccess], u'v0': Matrix[v0, (16, 1), GenMatAccess], u'u': Matrix[u, (16, 1), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'v2': Matrix[v2, (16, 1), GenMatAccess], u'v1': Matrix[v1, (16, 1), GenMatAccess], u'v3': Matrix[v3, (16, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'v4': Matrix[v4, (16, 1), GenMatAccess], u'z': Matrix[z, (16, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y[28,1] = ( ( F[28,28] * x[28,1] ) + ( B[28,16] * u[16,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: M0[28,28] = ( F[28,28] * P[28,28] )
+Eq.ann: {}
+Entry 2:
+Eq: Y[28,28] = ( ( M0[28,28] * T( F[28,28] ) ) + Q[28,28] )
+Eq.ann: {}
+Entry 3:
+Eq: v0[16,1] = ( z[16,1] - ( H[16,28] * y[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: M1[16,28] = ( H[16,28] * Y[28,28] )
+Eq.ann: {}
+Entry 5:
+Eq: M2[28,16] = ( Y[28,28] * T( H[16,28] ) )
+Eq.ann: {}
+Entry 6:
+Eq: M3[16,16] = ( ( M1[16,28] * T( H[16,28] ) ) + R[16,16] )
+Eq.ann: {}
+Entry 7:
+Eq: ( T( U[16,16] ) * U[16,16] ) = M4[16,16]
+Eq.ann: {}
+Entry 8:
+Eq: ( T( U0[16,16] ) * v2[16,1] ) = v1[16,1]
+Eq.ann: {}
+Entry 9:
+Eq: ( U0[16,16] * v4[16,1] ) = v3[16,1]
+Eq.ann: {}
+Entry 10:
+Eq: ( T( U0[16,16] ) * M6[16,28] ) = M5[16,28]
+Eq.ann: {}
+Entry 11:
+Eq: ( U0[16,16] * M8[16,28] ) = M7[16,28]
+Eq.ann: {}
+Entry 12:
+Eq: x[28,1] = ( y[28,1] + ( M2[28,16] * v0[16,1] ) )
+Eq.ann: {}
+Entry 13:
+Eq: P[28,28] = ( Y[28,28] - ( M2[28,16] * M1[16,28] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  16, Decl { {u'B': Matrix[B, (28, 16), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (16, 28), GenMatAccess], u'U0': UpperTriangular[U0, (16, 16), GenMatAccess], u'M5': Matrix[M5, (16, 28), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'M7': Matrix[M7, (16, 28), GenMatAccess], u'M6': Matrix[M6, (16, 28), GenMatAccess], u'v4': Matrix[v4, (16, 1), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (16, 16), USMatAccess], u'M2': Matrix[M2, (28, 16), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (16, 16), USMatAccess], u'U': UpperTriangular[U, (16, 16), GenMatAccess], u'M8': Matrix[M8, (16, 28), GenMatAccess], u'v0': Matrix[v0, (16, 1), GenMatAccess], u'u': Matrix[u, (16, 1), GenMatAccess], u'M4': Symmetric[M4, (16, 16), USMatAccess], u'v2': Matrix[v2, (16, 1), GenMatAccess], u'v1': Matrix[v1, (16, 1), GenMatAccess], u'v3': Matrix[v3, (16, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'M1': Matrix[M1, (16, 28), GenMatAccess], u'z': Matrix[z, (16, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {'part_schemes': {'Assign_Mul_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt': {'m0': 'm01.ll'}, 'ldiv_utn_ow_opt': {'m': 'm4.ll', 'n': 'n1.ll'}, 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}}, 'cl1ck_v': 0, 'variant_tag': 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt_m01_Assign_Mul_UpperTriangular_Matrix_Matrix_opt_m04_m21_ldiv_utn_ow_opt_m4_n1'}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Eq: Tile( (1, 1), y[28,1] ) = ( ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), x[28,1] ) ) + ( Tile( (1, 1), B[28,16] ) * Tile( (1, 1), u[16,1] ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), M0[28,28] ) = ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), P[28,28] ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Y[28,28] ) = ( ( Tile( (1, 1), M0[28,28] ) * T( Tile( (1, 1), F[28,28] ) ) ) + Tile( (1, 1), Q[28,28] ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), v0[16,1] ) = ( Tile( (1, 1), z[16,1] ) - ( Tile( (1, 1), H[16,28] ) * Tile( (1, 1), y[28,1] ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), M1[16,28] ) = ( Tile( (1, 1), H[16,28] ) * Tile( (1, 1), Y[28,28] ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), M2[28,16] ) = ( Tile( (1, 1), Y[28,28] ) * T( Tile( (1, 1), H[16,28] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), M3[16,16] ) = ( ( Tile( (1, 1), M1[16,28] ) * T( Tile( (1, 1), H[16,28] ) ) ) + Tile( (1, 1), R[16,16] ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), G(h(1, 16, 0), U[16,16],h(1, 16, 0)) ) = Sqrt( Tile( (1, 1), G(h(1, 16, 0), U[16,16],h(1, 16, 0)) ) )
+Eq.ann: {}
+Entry 8:
+For_{fi35;1;15;1} ( Entry 0:
+For_{fi60;0;fi35 - 2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 16, fi60), U[16,16],h(1, 16, fi35)) ) = ( Tile( (1, 1), G(h(1, 16, fi60), U[16,16],h(1, 16, fi35)) ) Div Tile( (1, 1), G(h(1, 16, fi60), U[16,16],h(1, 16, fi60)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(fi35 - fi60 - 1, 16, fi60 + 1), U[16,16],h(1, 16, fi35)) ) = ( Tile( (1, 1), G(h(fi35 - fi60 - 1, 16, fi60 + 1), U[16,16],h(1, 16, fi35)) ) - ( T( Tile( (1, 1), G(h(1, 16, fi60), U[16,16],h(fi35 - fi60 - 1, 16, fi60 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 16, fi60), U[16,16],h(1, 16, fi35)) ) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(1, 16, Max(0, fi35 - 1)), U[16,16],h(1, 16, fi35)) ) = ( Tile( (1, 1), G(h(1, 16, Max(0, fi35 - 1)), U[16,16],h(1, 16, fi35)) ) Div Tile( (1, 1), G(h(1, 16, Max(0, fi35 - 1)), U[16,16],h(1, 16, Max(0, fi35 - 1))) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), G(h(1, 16, fi35), U[16,16],h(1, 16, fi35)) ) = ( Tile( (1, 1), G(h(1, 16, fi35), M4[16,16],h(1, 16, fi35)) ) - ( T( Tile( (1, 1), G(h(fi35, 16, 0), U[16,16],h(1, 16, fi35)) ) ) * Tile( (1, 1), G(h(fi35, 16, 0), U[16,16],h(1, 16, fi35)) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), G(h(1, 16, fi35), U[16,16],h(1, 16, fi35)) ) = Sqrt( Tile( (1, 1), G(h(1, 16, fi35), U[16,16],h(1, 16, fi35)) ) )
+Eq.ann: {}
+ )Entry 9:
+For_{fi92;0;14;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 16, fi92), v2[16,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 16, fi92), v2[16,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 16, fi92), U0[16,16],h(1, 16, fi92)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi92 + 15, 16, fi92 + 1), v2[16,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi92 + 15, 16, fi92 + 1), v2[16,1],h(1, 1, 0)) ) - ( T( Tile( (1, 1), G(h(1, 16, fi92), U0[16,16],h(-fi92 + 15, 16, fi92 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 16, fi92), v2[16,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 10:
+Eq: Tile( (1, 1), G(h(1, 16, 15), v2[16,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 16, 15), v2[16,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 16, 15), U0[16,16],h(1, 16, 15)) ) )
+Eq.ann: {}
+Entry 11:
+For_{fi121;0;14;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 16, -fi121 + 15), v4[16,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 16, -fi121 + 15), v4[16,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 16, -fi121 + 15), U0[16,16],h(1, 16, -fi121 + 15)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi121 + 15, 16, 0), v4[16,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi121 + 15, 16, 0), v4[16,1],h(1, 1, 0)) ) - ( Tile( (1, 1), G(h(-fi121 + 15, 16, 0), U0[16,16],h(1, 16, -fi121 + 15)) ) Kro Tile( (1, 1), G(h(1, 16, -fi121 + 15), v4[16,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 12:
+Eq: Tile( (1, 1), G(h(1, 16, 0), v4[16,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 16, 0), v4[16,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 16, 0), U0[16,16],h(1, 16, 0)) ) )
+Eq.ann: {}
+Entry 13:
+For_{fi150;0;14;1} ( Entry 0:
+For_{fi169;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 16, fi150), M6[16,28],h(1, 28, fi169)) ) = ( Tile( (1, 1), G(h(1, 16, fi150), M6[16,28],h(1, 28, fi169)) ) Div Tile( (1, 1), G(h(1, 16, fi150), U0[16,16],h(1, 16, fi150)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi150 + 15, 16, fi150 + 1), M6[16,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi150 + 15, 16, fi150 + 1), M6[16,28],h(28, 28, 0)) ) - ( T( Tile( (1, 1), G(h(1, 16, fi150), U0[16,16],h(-fi150 + 15, 16, fi150 + 1)) ) ) * Tile( (1, 1), G(h(1, 16, fi150), M6[16,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 14:
+For_{fi180;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 16, 15), M6[16,28],h(1, 28, fi180)) ) = ( Tile( (1, 1), G(h(1, 16, 15), M6[16,28],h(1, 28, fi180)) ) Div Tile( (1, 1), G(h(1, 16, 15), U0[16,16],h(1, 16, 15)) ) )
+Eq.ann: {}
+ )Entry 15:
+For_{fi191;0;14;1} ( Entry 0:
+For_{fi210;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 16, -fi191 + 15), M8[16,28],h(1, 28, fi210)) ) = ( Tile( (1, 1), G(h(1, 16, -fi191 + 15), M8[16,28],h(1, 28, fi210)) ) Div Tile( (1, 1), G(h(1, 16, -fi191 + 15), U0[16,16],h(1, 16, -fi191 + 15)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi191 + 15, 16, 0), M8[16,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi191 + 15, 16, 0), M8[16,28],h(28, 28, 0)) ) - ( Tile( (1, 1), G(h(-fi191 + 15, 16, 0), U0[16,16],h(1, 16, -fi191 + 15)) ) * Tile( (1, 1), G(h(1, 16, -fi191 + 15), M8[16,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 16:
+For_{fi221;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 16, 0), M8[16,28],h(1, 28, fi221)) ) = ( Tile( (1, 1), G(h(1, 16, 0), M8[16,28],h(1, 28, fi221)) ) Div Tile( (1, 1), G(h(1, 16, 0), U0[16,16],h(1, 16, 0)) ) )
+Eq.ann: {}
+ )Entry 17:
+Eq: Tile( (1, 1), x[28,1] ) = ( Tile( (1, 1), y[28,1] ) + ( Tile( (1, 1), M2[28,16] ) * Tile( (1, 1), v0[16,1] ) ) )
+Eq.ann: {}
+Entry 18:
+Eq: Tile( (1, 1), P[28,28] ) = ( Tile( (1, 1), Y[28,28] ) - ( Tile( (1, 1), M2[28,16] ) * Tile( (1, 1), M1[16,28] ) ) )
+Eq.ann: {}
+, 0.756629645595 f/c -- folder: /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.1399238779
+
+
+
+  Compiling took 0:00:51.092138 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-17 14:20:57.714884 ----------------------------------------
+
+  Decl { {u'B': Matrix[B, (28, 20), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (20, 28), GenMatAccess], u'U0': UpperTriangular[U0, (20, 20), GenMatAccess], u'M5': Matrix[M5, (20, 28), GenMatAccess], u'M4': Symmetric[M4, (20, 20), USMatAccess], u'M7': Matrix[M7, (20, 28), GenMatAccess], u'M6': Matrix[M6, (20, 28), GenMatAccess], u'M1': Matrix[M1, (20, 28), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (20, 20), USMatAccess], u'M2': Matrix[M2, (28, 20), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (20, 20), USMatAccess], u'U': UpperTriangular[U, (20, 20), GenMatAccess], u'M8': Matrix[M8, (20, 28), GenMatAccess], u'v0': Matrix[v0, (20, 1), GenMatAccess], u'u': Matrix[u, (20, 1), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'v2': Matrix[v2, (20, 1), GenMatAccess], u'v1': Matrix[v1, (20, 1), GenMatAccess], u'v3': Matrix[v3, (20, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'v4': Matrix[v4, (20, 1), GenMatAccess], u'z': Matrix[z, (20, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y[28,1] = ( ( F[28,28] * x[28,1] ) + ( B[28,20] * u[20,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: M0[28,28] = ( F[28,28] * P[28,28] )
+Eq.ann: {}
+Entry 2:
+Eq: Y[28,28] = ( ( M0[28,28] * T( F[28,28] ) ) + Q[28,28] )
+Eq.ann: {}
+Entry 3:
+Eq: v0[20,1] = ( z[20,1] - ( H[20,28] * y[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: M1[20,28] = ( H[20,28] * Y[28,28] )
+Eq.ann: {}
+Entry 5:
+Eq: M2[28,20] = ( Y[28,28] * T( H[20,28] ) )
+Eq.ann: {}
+Entry 6:
+Eq: M3[20,20] = ( ( M1[20,28] * T( H[20,28] ) ) + R[20,20] )
+Eq.ann: {}
+Entry 7:
+Eq: ( T( U[20,20] ) * U[20,20] ) = M4[20,20]
+Eq.ann: {}
+Entry 8:
+Eq: ( T( U0[20,20] ) * v2[20,1] ) = v1[20,1]
+Eq.ann: {}
+Entry 9:
+Eq: ( U0[20,20] * v4[20,1] ) = v3[20,1]
+Eq.ann: {}
+Entry 10:
+Eq: ( T( U0[20,20] ) * M6[20,28] ) = M5[20,28]
+Eq.ann: {}
+Entry 11:
+Eq: ( U0[20,20] * M8[20,28] ) = M7[20,28]
+Eq.ann: {}
+Entry 12:
+Eq: x[28,1] = ( y[28,1] + ( M2[28,20] * v0[20,1] ) )
+Eq.ann: {}
+Entry 13:
+Eq: P[28,28] = ( Y[28,28] - ( M2[28,20] * M1[20,28] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  20, Decl { {u'B': Matrix[B, (28, 20), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (20, 28), GenMatAccess], u'U0': UpperTriangular[U0, (20, 20), GenMatAccess], u'M5': Matrix[M5, (20, 28), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'M7': Matrix[M7, (20, 28), GenMatAccess], u'M6': Matrix[M6, (20, 28), GenMatAccess], u'v4': Matrix[v4, (20, 1), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (20, 20), USMatAccess], u'M2': Matrix[M2, (28, 20), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (20, 20), USMatAccess], u'U': UpperTriangular[U, (20, 20), GenMatAccess], u'M8': Matrix[M8, (20, 28), GenMatAccess], u'v0': Matrix[v0, (20, 1), GenMatAccess], u'u': Matrix[u, (20, 1), GenMatAccess], u'M4': Symmetric[M4, (20, 20), USMatAccess], u'v2': Matrix[v2, (20, 1), GenMatAccess], u'v1': Matrix[v1, (20, 1), GenMatAccess], u'v3': Matrix[v3, (20, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'M1': Matrix[M1, (20, 28), GenMatAccess], u'z': Matrix[z, (20, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {'part_schemes': {'Assign_Mul_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt': {'m0': 'm01.ll'}, 'ldiv_utn_ow_opt': {'m': 'm4.ll', 'n': 'n1.ll'}, 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}}, 'cl1ck_v': 0, 'variant_tag': 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt_m01_Assign_Mul_UpperTriangular_Matrix_Matrix_opt_m04_m21_ldiv_utn_ow_opt_m4_n1'}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Eq: Tile( (1, 1), y[28,1] ) = ( ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), x[28,1] ) ) + ( Tile( (1, 1), B[28,20] ) * Tile( (1, 1), u[20,1] ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), M0[28,28] ) = ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), P[28,28] ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Y[28,28] ) = ( ( Tile( (1, 1), M0[28,28] ) * T( Tile( (1, 1), F[28,28] ) ) ) + Tile( (1, 1), Q[28,28] ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), v0[20,1] ) = ( Tile( (1, 1), z[20,1] ) - ( Tile( (1, 1), H[20,28] ) * Tile( (1, 1), y[28,1] ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), M1[20,28] ) = ( Tile( (1, 1), H[20,28] ) * Tile( (1, 1), Y[28,28] ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), M2[28,20] ) = ( Tile( (1, 1), Y[28,28] ) * T( Tile( (1, 1), H[20,28] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), M3[20,20] ) = ( ( Tile( (1, 1), M1[20,28] ) * T( Tile( (1, 1), H[20,28] ) ) ) + Tile( (1, 1), R[20,20] ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), G(h(1, 20, 0), U[20,20],h(1, 20, 0)) ) = Sqrt( Tile( (1, 1), G(h(1, 20, 0), U[20,20],h(1, 20, 0)) ) )
+Eq.ann: {}
+Entry 8:
+For_{fi35;1;19;1} ( Entry 0:
+For_{fi60;0;fi35 - 2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 20, fi60), U[20,20],h(1, 20, fi35)) ) = ( Tile( (1, 1), G(h(1, 20, fi60), U[20,20],h(1, 20, fi35)) ) Div Tile( (1, 1), G(h(1, 20, fi60), U[20,20],h(1, 20, fi60)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(fi35 - fi60 - 1, 20, fi60 + 1), U[20,20],h(1, 20, fi35)) ) = ( Tile( (1, 1), G(h(fi35 - fi60 - 1, 20, fi60 + 1), U[20,20],h(1, 20, fi35)) ) - ( T( Tile( (1, 1), G(h(1, 20, fi60), U[20,20],h(fi35 - fi60 - 1, 20, fi60 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 20, fi60), U[20,20],h(1, 20, fi35)) ) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(1, 20, Max(0, fi35 - 1)), U[20,20],h(1, 20, fi35)) ) = ( Tile( (1, 1), G(h(1, 20, Max(0, fi35 - 1)), U[20,20],h(1, 20, fi35)) ) Div Tile( (1, 1), G(h(1, 20, Max(0, fi35 - 1)), U[20,20],h(1, 20, Max(0, fi35 - 1))) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), G(h(1, 20, fi35), U[20,20],h(1, 20, fi35)) ) = ( Tile( (1, 1), G(h(1, 20, fi35), M4[20,20],h(1, 20, fi35)) ) - ( T( Tile( (1, 1), G(h(fi35, 20, 0), U[20,20],h(1, 20, fi35)) ) ) * Tile( (1, 1), G(h(fi35, 20, 0), U[20,20],h(1, 20, fi35)) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), G(h(1, 20, fi35), U[20,20],h(1, 20, fi35)) ) = Sqrt( Tile( (1, 1), G(h(1, 20, fi35), U[20,20],h(1, 20, fi35)) ) )
+Eq.ann: {}
+ )Entry 9:
+For_{fi92;0;18;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 20, fi92), v2[20,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 20, fi92), v2[20,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 20, fi92), U0[20,20],h(1, 20, fi92)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi92 + 19, 20, fi92 + 1), v2[20,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi92 + 19, 20, fi92 + 1), v2[20,1],h(1, 1, 0)) ) - ( T( Tile( (1, 1), G(h(1, 20, fi92), U0[20,20],h(-fi92 + 19, 20, fi92 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 20, fi92), v2[20,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 10:
+Eq: Tile( (1, 1), G(h(1, 20, 19), v2[20,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 20, 19), v2[20,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 20, 19), U0[20,20],h(1, 20, 19)) ) )
+Eq.ann: {}
+Entry 11:
+For_{fi121;0;18;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 20, -fi121 + 19), v4[20,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 20, -fi121 + 19), v4[20,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 20, -fi121 + 19), U0[20,20],h(1, 20, -fi121 + 19)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi121 + 19, 20, 0), v4[20,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi121 + 19, 20, 0), v4[20,1],h(1, 1, 0)) ) - ( Tile( (1, 1), G(h(-fi121 + 19, 20, 0), U0[20,20],h(1, 20, -fi121 + 19)) ) Kro Tile( (1, 1), G(h(1, 20, -fi121 + 19), v4[20,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 12:
+Eq: Tile( (1, 1), G(h(1, 20, 0), v4[20,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 20, 0), v4[20,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 20, 0), U0[20,20],h(1, 20, 0)) ) )
+Eq.ann: {}
+Entry 13:
+For_{fi150;0;18;1} ( Entry 0:
+For_{fi169;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 20, fi150), M6[20,28],h(1, 28, fi169)) ) = ( Tile( (1, 1), G(h(1, 20, fi150), M6[20,28],h(1, 28, fi169)) ) Div Tile( (1, 1), G(h(1, 20, fi150), U0[20,20],h(1, 20, fi150)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi150 + 19, 20, fi150 + 1), M6[20,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi150 + 19, 20, fi150 + 1), M6[20,28],h(28, 28, 0)) ) - ( T( Tile( (1, 1), G(h(1, 20, fi150), U0[20,20],h(-fi150 + 19, 20, fi150 + 1)) ) ) * Tile( (1, 1), G(h(1, 20, fi150), M6[20,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 14:
+For_{fi180;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 20, 19), M6[20,28],h(1, 28, fi180)) ) = ( Tile( (1, 1), G(h(1, 20, 19), M6[20,28],h(1, 28, fi180)) ) Div Tile( (1, 1), G(h(1, 20, 19), U0[20,20],h(1, 20, 19)) ) )
+Eq.ann: {}
+ )Entry 15:
+For_{fi191;0;18;1} ( Entry 0:
+For_{fi210;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 20, -fi191 + 19), M8[20,28],h(1, 28, fi210)) ) = ( Tile( (1, 1), G(h(1, 20, -fi191 + 19), M8[20,28],h(1, 28, fi210)) ) Div Tile( (1, 1), G(h(1, 20, -fi191 + 19), U0[20,20],h(1, 20, -fi191 + 19)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi191 + 19, 20, 0), M8[20,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi191 + 19, 20, 0), M8[20,28],h(28, 28, 0)) ) - ( Tile( (1, 1), G(h(-fi191 + 19, 20, 0), U0[20,20],h(1, 20, -fi191 + 19)) ) * Tile( (1, 1), G(h(1, 20, -fi191 + 19), M8[20,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 16:
+For_{fi221;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 20, 0), M8[20,28],h(1, 28, fi221)) ) = ( Tile( (1, 1), G(h(1, 20, 0), M8[20,28],h(1, 28, fi221)) ) Div Tile( (1, 1), G(h(1, 20, 0), U0[20,20],h(1, 20, 0)) ) )
+Eq.ann: {}
+ )Entry 17:
+Eq: Tile( (1, 1), x[28,1] ) = ( Tile( (1, 1), y[28,1] ) + ( Tile( (1, 1), M2[28,20] ) * Tile( (1, 1), v0[20,1] ) ) )
+Eq.ann: {}
+Entry 18:
+Eq: Tile( (1, 1), P[28,28] ) = ( Tile( (1, 1), Y[28,28] ) - ( Tile( (1, 1), M2[28,20] ) * Tile( (1, 1), M1[20,28] ) ) )
+Eq.ann: {}
+, 0.74647305898 f/c -- folder: /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.1399238779
+
+
+
+  Compiling took 0:00:51.303945 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-17 14:21:50.376210 ----------------------------------------
+
+  Decl { {u'B': Matrix[B, (28, 24), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (24, 28), GenMatAccess], u'U0': UpperTriangular[U0, (24, 24), GenMatAccess], u'M5': Matrix[M5, (24, 28), GenMatAccess], u'M4': Symmetric[M4, (24, 24), USMatAccess], u'M7': Matrix[M7, (24, 28), GenMatAccess], u'M6': Matrix[M6, (24, 28), GenMatAccess], u'M1': Matrix[M1, (24, 28), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (24, 24), USMatAccess], u'M2': Matrix[M2, (28, 24), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (24, 24), USMatAccess], u'U': UpperTriangular[U, (24, 24), GenMatAccess], u'M8': Matrix[M8, (24, 28), GenMatAccess], u'v0': Matrix[v0, (24, 1), GenMatAccess], u'u': Matrix[u, (24, 1), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'v2': Matrix[v2, (24, 1), GenMatAccess], u'v1': Matrix[v1, (24, 1), GenMatAccess], u'v3': Matrix[v3, (24, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'v4': Matrix[v4, (24, 1), GenMatAccess], u'z': Matrix[z, (24, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y[28,1] = ( ( F[28,28] * x[28,1] ) + ( B[28,24] * u[24,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: M0[28,28] = ( F[28,28] * P[28,28] )
+Eq.ann: {}
+Entry 2:
+Eq: Y[28,28] = ( ( M0[28,28] * T( F[28,28] ) ) + Q[28,28] )
+Eq.ann: {}
+Entry 3:
+Eq: v0[24,1] = ( z[24,1] - ( H[24,28] * y[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: M1[24,28] = ( H[24,28] * Y[28,28] )
+Eq.ann: {}
+Entry 5:
+Eq: M2[28,24] = ( Y[28,28] * T( H[24,28] ) )
+Eq.ann: {}
+Entry 6:
+Eq: M3[24,24] = ( ( M1[24,28] * T( H[24,28] ) ) + R[24,24] )
+Eq.ann: {}
+Entry 7:
+Eq: ( T( U[24,24] ) * U[24,24] ) = M4[24,24]
+Eq.ann: {}
+Entry 8:
+Eq: ( T( U0[24,24] ) * v2[24,1] ) = v1[24,1]
+Eq.ann: {}
+Entry 9:
+Eq: ( U0[24,24] * v4[24,1] ) = v3[24,1]
+Eq.ann: {}
+Entry 10:
+Eq: ( T( U0[24,24] ) * M6[24,28] ) = M5[24,28]
+Eq.ann: {}
+Entry 11:
+Eq: ( U0[24,24] * M8[24,28] ) = M7[24,28]
+Eq.ann: {}
+Entry 12:
+Eq: x[28,1] = ( y[28,1] + ( M2[28,24] * v0[24,1] ) )
+Eq.ann: {}
+Entry 13:
+Eq: P[28,28] = ( Y[28,28] - ( M2[28,24] * M1[24,28] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  24, Decl { {u'B': Matrix[B, (28, 24), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': Matrix[H, (24, 28), GenMatAccess], u'U0': UpperTriangular[U0, (24, 24), GenMatAccess], u'M5': Matrix[M5, (24, 28), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'M7': Matrix[M7, (24, 28), GenMatAccess], u'M6': Matrix[M6, (24, 28), GenMatAccess], u'v4': Matrix[v4, (24, 1), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (24, 24), USMatAccess], u'M2': Matrix[M2, (28, 24), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (24, 24), USMatAccess], u'U': UpperTriangular[U, (24, 24), GenMatAccess], u'M8': Matrix[M8, (24, 28), GenMatAccess], u'v0': Matrix[v0, (24, 1), GenMatAccess], u'u': Matrix[u, (24, 1), GenMatAccess], u'M4': Symmetric[M4, (24, 24), USMatAccess], u'v2': Matrix[v2, (24, 1), GenMatAccess], u'v1': Matrix[v1, (24, 1), GenMatAccess], u'v3': Matrix[v3, (24, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'M1': Matrix[M1, (24, 28), GenMatAccess], u'z': Matrix[z, (24, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {'part_schemes': {'Assign_Mul_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt': {'m0': 'm01.ll'}, 'ldiv_utn_ow_opt': {'m': 'm4.ll', 'n': 'n1.ll'}, 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}}, 'cl1ck_v': 0, 'variant_tag': 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt_m01_Assign_Mul_UpperTriangular_Matrix_Matrix_opt_m04_m21_ldiv_utn_ow_opt_m4_n1'}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Eq: Tile( (1, 1), y[28,1] ) = ( ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), x[28,1] ) ) + ( Tile( (1, 1), B[28,24] ) * Tile( (1, 1), u[24,1] ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), M0[28,28] ) = ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), P[28,28] ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Y[28,28] ) = ( ( Tile( (1, 1), M0[28,28] ) * T( Tile( (1, 1), F[28,28] ) ) ) + Tile( (1, 1), Q[28,28] ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), v0[24,1] ) = ( Tile( (1, 1), z[24,1] ) - ( Tile( (1, 1), H[24,28] ) * Tile( (1, 1), y[28,1] ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), M1[24,28] ) = ( Tile( (1, 1), H[24,28] ) * Tile( (1, 1), Y[28,28] ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), M2[28,24] ) = ( Tile( (1, 1), Y[28,28] ) * T( Tile( (1, 1), H[24,28] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), M3[24,24] ) = ( ( Tile( (1, 1), M1[24,28] ) * T( Tile( (1, 1), H[24,28] ) ) ) + Tile( (1, 1), R[24,24] ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), G(h(1, 24, 0), U[24,24],h(1, 24, 0)) ) = Sqrt( Tile( (1, 1), G(h(1, 24, 0), U[24,24],h(1, 24, 0)) ) )
+Eq.ann: {}
+Entry 8:
+For_{fi35;1;23;1} ( Entry 0:
+For_{fi60;0;fi35 - 2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 24, fi60), U[24,24],h(1, 24, fi35)) ) = ( Tile( (1, 1), G(h(1, 24, fi60), U[24,24],h(1, 24, fi35)) ) Div Tile( (1, 1), G(h(1, 24, fi60), U[24,24],h(1, 24, fi60)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(fi35 - fi60 - 1, 24, fi60 + 1), U[24,24],h(1, 24, fi35)) ) = ( Tile( (1, 1), G(h(fi35 - fi60 - 1, 24, fi60 + 1), U[24,24],h(1, 24, fi35)) ) - ( T( Tile( (1, 1), G(h(1, 24, fi60), U[24,24],h(fi35 - fi60 - 1, 24, fi60 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 24, fi60), U[24,24],h(1, 24, fi35)) ) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(1, 24, Max(0, fi35 - 1)), U[24,24],h(1, 24, fi35)) ) = ( Tile( (1, 1), G(h(1, 24, Max(0, fi35 - 1)), U[24,24],h(1, 24, fi35)) ) Div Tile( (1, 1), G(h(1, 24, Max(0, fi35 - 1)), U[24,24],h(1, 24, Max(0, fi35 - 1))) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), G(h(1, 24, fi35), U[24,24],h(1, 24, fi35)) ) = ( Tile( (1, 1), G(h(1, 24, fi35), M4[24,24],h(1, 24, fi35)) ) - ( T( Tile( (1, 1), G(h(fi35, 24, 0), U[24,24],h(1, 24, fi35)) ) ) * Tile( (1, 1), G(h(fi35, 24, 0), U[24,24],h(1, 24, fi35)) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), G(h(1, 24, fi35), U[24,24],h(1, 24, fi35)) ) = Sqrt( Tile( (1, 1), G(h(1, 24, fi35), U[24,24],h(1, 24, fi35)) ) )
+Eq.ann: {}
+ )Entry 9:
+For_{fi92;0;22;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 24, fi92), v2[24,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 24, fi92), v2[24,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 24, fi92), U0[24,24],h(1, 24, fi92)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi92 + 23, 24, fi92 + 1), v2[24,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi92 + 23, 24, fi92 + 1), v2[24,1],h(1, 1, 0)) ) - ( T( Tile( (1, 1), G(h(1, 24, fi92), U0[24,24],h(-fi92 + 23, 24, fi92 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 24, fi92), v2[24,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 10:
+Eq: Tile( (1, 1), G(h(1, 24, 23), v2[24,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 24, 23), v2[24,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 24, 23), U0[24,24],h(1, 24, 23)) ) )
+Eq.ann: {}
+Entry 11:
+For_{fi121;0;22;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 24, -fi121 + 23), v4[24,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 24, -fi121 + 23), v4[24,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 24, -fi121 + 23), U0[24,24],h(1, 24, -fi121 + 23)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi121 + 23, 24, 0), v4[24,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi121 + 23, 24, 0), v4[24,1],h(1, 1, 0)) ) - ( Tile( (1, 1), G(h(-fi121 + 23, 24, 0), U0[24,24],h(1, 24, -fi121 + 23)) ) Kro Tile( (1, 1), G(h(1, 24, -fi121 + 23), v4[24,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 12:
+Eq: Tile( (1, 1), G(h(1, 24, 0), v4[24,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 24, 0), v4[24,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 24, 0), U0[24,24],h(1, 24, 0)) ) )
+Eq.ann: {}
+Entry 13:
+For_{fi150;0;22;1} ( Entry 0:
+For_{fi169;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 24, fi150), M6[24,28],h(1, 28, fi169)) ) = ( Tile( (1, 1), G(h(1, 24, fi150), M6[24,28],h(1, 28, fi169)) ) Div Tile( (1, 1), G(h(1, 24, fi150), U0[24,24],h(1, 24, fi150)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi150 + 23, 24, fi150 + 1), M6[24,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi150 + 23, 24, fi150 + 1), M6[24,28],h(28, 28, 0)) ) - ( T( Tile( (1, 1), G(h(1, 24, fi150), U0[24,24],h(-fi150 + 23, 24, fi150 + 1)) ) ) * Tile( (1, 1), G(h(1, 24, fi150), M6[24,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 14:
+For_{fi180;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 24, 23), M6[24,28],h(1, 28, fi180)) ) = ( Tile( (1, 1), G(h(1, 24, 23), M6[24,28],h(1, 28, fi180)) ) Div Tile( (1, 1), G(h(1, 24, 23), U0[24,24],h(1, 24, 23)) ) )
+Eq.ann: {}
+ )Entry 15:
+For_{fi191;0;22;1} ( Entry 0:
+For_{fi210;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 24, -fi191 + 23), M8[24,28],h(1, 28, fi210)) ) = ( Tile( (1, 1), G(h(1, 24, -fi191 + 23), M8[24,28],h(1, 28, fi210)) ) Div Tile( (1, 1), G(h(1, 24, -fi191 + 23), U0[24,24],h(1, 24, -fi191 + 23)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi191 + 23, 24, 0), M8[24,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi191 + 23, 24, 0), M8[24,28],h(28, 28, 0)) ) - ( Tile( (1, 1), G(h(-fi191 + 23, 24, 0), U0[24,24],h(1, 24, -fi191 + 23)) ) * Tile( (1, 1), G(h(1, 24, -fi191 + 23), M8[24,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 16:
+For_{fi221;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 24, 0), M8[24,28],h(1, 28, fi221)) ) = ( Tile( (1, 1), G(h(1, 24, 0), M8[24,28],h(1, 28, fi221)) ) Div Tile( (1, 1), G(h(1, 24, 0), U0[24,24],h(1, 24, 0)) ) )
+Eq.ann: {}
+ )Entry 17:
+Eq: Tile( (1, 1), x[28,1] ) = ( Tile( (1, 1), y[28,1] ) + ( Tile( (1, 1), M2[28,24] ) * Tile( (1, 1), v0[24,1] ) ) )
+Eq.ann: {}
+Entry 18:
+Eq: Tile( (1, 1), P[28,28] ) = ( Tile( (1, 1), Y[28,28] ) - ( Tile( (1, 1), M2[28,24] ) * Tile( (1, 1), M1[24,28] ) ) )
+Eq.ann: {}
+, 0.74694919807 f/c -- folder: /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.1399238779
+
+
+
+  Compiling took 0:00:51.082450 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-17 14:22:42.816678 ----------------------------------------
+
+  Decl { {u'B': SquaredMatrix[B, (28, 28), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': SquaredMatrix[H, (28, 28), GenMatAccess], u'U0': UpperTriangular[U0, (28, 28), GenMatAccess], u'M5': SquaredMatrix[M5, (28, 28), GenMatAccess], u'M4': Symmetric[M4, (28, 28), USMatAccess], u'M7': SquaredMatrix[M7, (28, 28), GenMatAccess], u'M6': SquaredMatrix[M6, (28, 28), GenMatAccess], u'M1': SquaredMatrix[M1, (28, 28), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (28, 28), USMatAccess], u'M2': SquaredMatrix[M2, (28, 28), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (28, 28), USMatAccess], u'U': UpperTriangular[U, (28, 28), GenMatAccess], u'M8': SquaredMatrix[M8, (28, 28), GenMatAccess], u'v0': Matrix[v0, (28, 1), GenMatAccess], u'u': Matrix[u, (28, 1), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'v2': Matrix[v2, (28, 1), GenMatAccess], u'v1': Matrix[v1, (28, 1), GenMatAccess], u'v3': Matrix[v3, (28, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'v4': Matrix[v4, (28, 1), GenMatAccess], u'z': Matrix[z, (28, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y[28,1] = ( ( F[28,28] * x[28,1] ) + ( B[28,28] * u[28,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: M0[28,28] = ( F[28,28] * P[28,28] )
+Eq.ann: {}
+Entry 2:
+Eq: Y[28,28] = ( ( M0[28,28] * T( F[28,28] ) ) + Q[28,28] )
+Eq.ann: {}
+Entry 3:
+Eq: v0[28,1] = ( z[28,1] - ( H[28,28] * y[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: M1[28,28] = ( H[28,28] * Y[28,28] )
+Eq.ann: {}
+Entry 5:
+Eq: M2[28,28] = ( Y[28,28] * T( H[28,28] ) )
+Eq.ann: {}
+Entry 6:
+Eq: M3[28,28] = ( ( M1[28,28] * T( H[28,28] ) ) + R[28,28] )
+Eq.ann: {}
+Entry 7:
+Eq: ( T( U[28,28] ) * U[28,28] ) = M4[28,28]
+Eq.ann: {}
+Entry 8:
+Eq: ( T( U0[28,28] ) * v2[28,1] ) = v1[28,1]
+Eq.ann: {}
+Entry 9:
+Eq: ( U0[28,28] * v4[28,1] ) = v3[28,1]
+Eq.ann: {}
+Entry 10:
+Eq: ( T( U0[28,28] ) * M6[28,28] ) = M5[28,28]
+Eq.ann: {}
+Entry 11:
+Eq: ( U0[28,28] * M8[28,28] ) = M7[28,28]
+Eq.ann: {}
+Entry 12:
+Eq: x[28,1] = ( y[28,1] + ( M2[28,28] * v0[28,1] ) )
+Eq.ann: {}
+Entry 13:
+Eq: P[28,28] = ( Y[28,28] - ( M2[28,28] * M1[28,28] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  28, Decl { {u'B': SquaredMatrix[B, (28, 28), GenMatAccess], u'F': SquaredMatrix[F, (28, 28), GenMatAccess], u'H': SquaredMatrix[H, (28, 28), GenMatAccess], u'U0': UpperTriangular[U0, (28, 28), GenMatAccess], u'M5': SquaredMatrix[M5, (28, 28), GenMatAccess], u'P': Symmetric[P, (28, 28), USMatAccess], u'M7': SquaredMatrix[M7, (28, 28), GenMatAccess], u'M6': SquaredMatrix[M6, (28, 28), GenMatAccess], u'v4': Matrix[v4, (28, 1), GenMatAccess], u'M0': SquaredMatrix[M0, (28, 28), GenMatAccess], u'M3': Symmetric[M3, (28, 28), USMatAccess], u'M2': SquaredMatrix[M2, (28, 28), GenMatAccess], u'Y': Symmetric[Y, (28, 28), USMatAccess], u'R': Symmetric[R, (28, 28), USMatAccess], u'U': UpperTriangular[U, (28, 28), GenMatAccess], u'M8': SquaredMatrix[M8, (28, 28), GenMatAccess], u'v0': Matrix[v0, (28, 1), GenMatAccess], u'u': Matrix[u, (28, 1), GenMatAccess], u'M4': Symmetric[M4, (28, 28), USMatAccess], u'v2': Matrix[v2, (28, 1), GenMatAccess], u'v1': Matrix[v1, (28, 1), GenMatAccess], u'v3': Matrix[v3, (28, 1), GenMatAccess], u'Q': Symmetric[Q, (28, 28), USMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'M1': SquaredMatrix[M1, (28, 28), GenMatAccess], u'z': Matrix[z, (28, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {'part_schemes': {'Assign_Mul_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt': {'m0': 'm01.ll'}, 'ldiv_utn_ow_opt': {'m': 'm4.ll', 'n': 'n1.ll'}, 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_T_UpperTriangular_SquaredMatrix_SquaredMatrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}, 'Assign_Mul_UpperTriangular_SquaredMatrix_SquaredMatrix_opt': {'m0': 'm04.ll', 'm2': 'm21.ll'}}, 'cl1ck_v': 0, 'variant_tag': 'Assign_Mul_T_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_SquaredMatrix_SquaredMatrix_opt_m04_m21_Assign_Mul_T_UpperTriangular_UpperTriangular_Symmetric_opt_m01_Assign_Mul_UpperTriangular_Matrix_Matrix_opt_m04_m21_Assign_Mul_UpperTriangular_SquaredMatrix_SquaredMatrix_opt_m04_m21_ldiv_utn_ow_opt_m4_n1'}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Eq: Tile( (1, 1), y[28,1] ) = ( ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), x[28,1] ) ) + ( Tile( (1, 1), B[28,28] ) * Tile( (1, 1), u[28,1] ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), M0[28,28] ) = ( Tile( (1, 1), F[28,28] ) * Tile( (1, 1), P[28,28] ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Y[28,28] ) = ( ( Tile( (1, 1), M0[28,28] ) * T( Tile( (1, 1), F[28,28] ) ) ) + Tile( (1, 1), Q[28,28] ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), v0[28,1] ) = ( Tile( (1, 1), z[28,1] ) - ( Tile( (1, 1), H[28,28] ) * Tile( (1, 1), y[28,1] ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), M1[28,28] ) = ( Tile( (1, 1), H[28,28] ) * Tile( (1, 1), Y[28,28] ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), M2[28,28] ) = ( Tile( (1, 1), Y[28,28] ) * T( Tile( (1, 1), H[28,28] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), M3[28,28] ) = ( ( Tile( (1, 1), M1[28,28] ) * T( Tile( (1, 1), H[28,28] ) ) ) + Tile( (1, 1), R[28,28] ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), G(h(1, 28, 0), U[28,28],h(1, 28, 0)) ) = Sqrt( Tile( (1, 1), G(h(1, 28, 0), U[28,28],h(1, 28, 0)) ) )
+Eq.ann: {}
+Entry 8:
+For_{fi35;1;27;1} ( Entry 0:
+For_{fi60;0;fi35 - 2;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 28, fi60), U[28,28],h(1, 28, fi35)) ) = ( Tile( (1, 1), G(h(1, 28, fi60), U[28,28],h(1, 28, fi35)) ) Div Tile( (1, 1), G(h(1, 28, fi60), U[28,28],h(1, 28, fi60)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(fi35 - fi60 - 1, 28, fi60 + 1), U[28,28],h(1, 28, fi35)) ) = ( Tile( (1, 1), G(h(fi35 - fi60 - 1, 28, fi60 + 1), U[28,28],h(1, 28, fi35)) ) - ( T( Tile( (1, 1), G(h(1, 28, fi60), U[28,28],h(fi35 - fi60 - 1, 28, fi60 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 28, fi60), U[28,28],h(1, 28, fi35)) ) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(1, 28, Max(0, fi35 - 1)), U[28,28],h(1, 28, fi35)) ) = ( Tile( (1, 1), G(h(1, 28, Max(0, fi35 - 1)), U[28,28],h(1, 28, fi35)) ) Div Tile( (1, 1), G(h(1, 28, Max(0, fi35 - 1)), U[28,28],h(1, 28, Max(0, fi35 - 1))) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), G(h(1, 28, fi35), U[28,28],h(1, 28, fi35)) ) = ( Tile( (1, 1), G(h(1, 28, fi35), M4[28,28],h(1, 28, fi35)) ) - ( T( Tile( (1, 1), G(h(fi35, 28, 0), U[28,28],h(1, 28, fi35)) ) ) * Tile( (1, 1), G(h(fi35, 28, 0), U[28,28],h(1, 28, fi35)) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), G(h(1, 28, fi35), U[28,28],h(1, 28, fi35)) ) = Sqrt( Tile( (1, 1), G(h(1, 28, fi35), U[28,28],h(1, 28, fi35)) ) )
+Eq.ann: {}
+ )Entry 9:
+For_{fi92;0;26;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 28, fi92), v2[28,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 28, fi92), v2[28,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 28, fi92), U0[28,28],h(1, 28, fi92)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi92 + 27, 28, fi92 + 1), v2[28,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi92 + 27, 28, fi92 + 1), v2[28,1],h(1, 1, 0)) ) - ( T( Tile( (1, 1), G(h(1, 28, fi92), U0[28,28],h(-fi92 + 27, 28, fi92 + 1)) ) ) Kro Tile( (1, 1), G(h(1, 28, fi92), v2[28,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 10:
+Eq: Tile( (1, 1), G(h(1, 28, 27), v2[28,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 28, 27), v2[28,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 28, 27), U0[28,28],h(1, 28, 27)) ) )
+Eq.ann: {}
+Entry 11:
+For_{fi121;0;26;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 28, -fi121 + 27), v4[28,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 28, -fi121 + 27), v4[28,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 28, -fi121 + 27), U0[28,28],h(1, 28, -fi121 + 27)) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), G(h(-fi121 + 27, 28, 0), v4[28,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(-fi121 + 27, 28, 0), v4[28,1],h(1, 1, 0)) ) - ( Tile( (1, 1), G(h(-fi121 + 27, 28, 0), U0[28,28],h(1, 28, -fi121 + 27)) ) Kro Tile( (1, 1), G(h(1, 28, -fi121 + 27), v4[28,1],h(1, 1, 0)) ) ) )
+Eq.ann: {}
+ )Entry 12:
+Eq: Tile( (1, 1), G(h(1, 28, 0), v4[28,1],h(1, 1, 0)) ) = ( Tile( (1, 1), G(h(1, 28, 0), v4[28,1],h(1, 1, 0)) ) Div Tile( (1, 1), G(h(1, 28, 0), U0[28,28],h(1, 28, 0)) ) )
+Eq.ann: {}
+Entry 13:
+For_{fi150;0;26;1} ( Entry 0:
+For_{fi169;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 28, fi150), M6[28,28],h(1, 28, fi169)) ) = ( Tile( (1, 1), G(h(1, 28, fi150), M6[28,28],h(1, 28, fi169)) ) Div Tile( (1, 1), G(h(1, 28, fi150), U0[28,28],h(1, 28, fi150)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi150 + 27, 28, fi150 + 1), M6[28,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi150 + 27, 28, fi150 + 1), M6[28,28],h(28, 28, 0)) ) - ( T( Tile( (1, 1), G(h(1, 28, fi150), U0[28,28],h(-fi150 + 27, 28, fi150 + 1)) ) ) * Tile( (1, 1), G(h(1, 28, fi150), M6[28,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 14:
+For_{fi180;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 28, 27), M6[28,28],h(1, 28, fi180)) ) = ( Tile( (1, 1), G(h(1, 28, 27), M6[28,28],h(1, 28, fi180)) ) Div Tile( (1, 1), G(h(1, 28, 27), U0[28,28],h(1, 28, 27)) ) )
+Eq.ann: {}
+ )Entry 15:
+For_{fi191;0;26;1} ( Entry 0:
+For_{fi210;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 28, -fi191 + 27), M8[28,28],h(1, 28, fi210)) ) = ( Tile( (1, 1), G(h(1, 28, -fi191 + 27), M8[28,28],h(1, 28, fi210)) ) Div Tile( (1, 1), G(h(1, 28, -fi191 + 27), U0[28,28],h(1, 28, -fi191 + 27)) ) )
+Eq.ann: {}
+ )Entry 1:
+Eq: Tile( (1, 1), G(h(-fi191 + 27, 28, 0), M8[28,28],h(28, 28, 0)) ) = ( Tile( (1, 1), G(h(-fi191 + 27, 28, 0), M8[28,28],h(28, 28, 0)) ) - ( Tile( (1, 1), G(h(-fi191 + 27, 28, 0), U0[28,28],h(1, 28, -fi191 + 27)) ) * Tile( (1, 1), G(h(1, 28, -fi191 + 27), M8[28,28],h(28, 28, 0)) ) ) )
+Eq.ann: {}
+ )Entry 16:
+For_{fi221;0;27;1} ( Entry 0:
+Eq: Tile( (1, 1), G(h(1, 28, 0), M8[28,28],h(1, 28, fi221)) ) = ( Tile( (1, 1), G(h(1, 28, 0), M8[28,28],h(1, 28, fi221)) ) Div Tile( (1, 1), G(h(1, 28, 0), U0[28,28],h(1, 28, 0)) ) )
+Eq.ann: {}
+ )Entry 17:
+Eq: Tile( (1, 1), x[28,1] ) = ( Tile( (1, 1), y[28,1] ) + ( Tile( (1, 1), M2[28,28] ) * Tile( (1, 1), v0[28,1] ) ) )
+Eq.ann: {}
+Entry 18:
+Eq: Tile( (1, 1), P[28,28] ) = ( Tile( (1, 1), Y[28,28] ) - ( Tile( (1, 1), M2[28,28] ) * Tile( (1, 1), M1[28,28] ) ) )
+Eq.ann: {}
+, 0.723732412836 f/c -- folder: /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.1399238779
+
+
+
+  Compiling took 0:00:51.167980 ----------------------------------------------------------
+

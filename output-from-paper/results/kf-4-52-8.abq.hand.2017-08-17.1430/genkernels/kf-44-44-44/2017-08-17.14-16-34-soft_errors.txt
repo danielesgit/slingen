@@ -1,0 +1,5 @@
+WARNING: Error = 1.046e-07: P | at (i,j) = (1,40) P = 0.0517178 - Pout = 0.0517178
+ WARNING: Error = 1.39048e-07: P | at (i,j) = (3,40) P = 0.0505741 - Pout = 0.0505741
+ WARNING: Error = 1.33063e-06: P | at (i,j) = (11,17) P = 0.00320839 - Pout = 0.0032084
+ WARNING: Error = 1.35691e-07: P | at (i,j) = (11,21) P = 0.0299207 - Pout = 0.0299207
+ WARNING: Error = 2.3684e-07: P | at (i,j) = (16,23) P = 0.0266197 - Pout = 0.0266197

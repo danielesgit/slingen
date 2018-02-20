@@ -1,0 +1,7 @@
+CC = icpc
+LD = icpc
+CFLAGS = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST
+LDFLAGS =  
+ARCH = x86
+
+make -s -C /tmp/lgen/gpr-4-52-8.hand.abq.2017-08-14.2445562228 CC="icpc" CFLAGS="-O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST" LD="icpc" LDFLAGS=" " ARCH="x86" all

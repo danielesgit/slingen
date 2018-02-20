@@ -1,0 +1,7 @@
+sympy==0.7.5
+grako==2.4.3
+islpy==2014.2
+matplotlib==1.4
+requests==2.1.0
+networkx==1.9.1
+webcolors==1.5

@@ -1,0 +1,532 @@
+  Starting compiler at 2017-08-14 23:14:02.742462 ----------------------------------------
+
+  Decl { {u'A': SquaredMatrix[A, (4, 4), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (4, 1), GenMatAccess], u'y2': Matrix[y2, (4, 1), GenMatAccess], u'v1': Matrix[v1, (4, 1), GenMatAccess], u'v2': Matrix[v2, (4, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (4, 4), GenMatAccess], u'y': Matrix[y, (4, 1), GenMatAccess], u'x': Matrix[x, (4, 1), GenMatAccess], u'x0': Matrix[x0, (4, 1), GenMatAccess], u'x1': Matrix[x1, (4, 1), GenMatAccess], u'z1': Matrix[z1, (4, 1), GenMatAccess], u'z2': Matrix[z2, (4, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y1[4,1] = ( ( a[1,1] Kro v1[4,1] ) + ( t[1,1] Kro z1[4,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: y2[4,1] = ( ( a[1,1] Kro v2[4,1] ) + ( t[1,1] Kro z2[4,1] ) )
+Eq.ann: {}
+Entry 2:
+Eq: x1[4,1] = ( ( T( W[4,4] ) * y1[4,1] ) - ( T( A[4,4] ) * y2[4,1] ) )
+Eq.ann: {}
+Entry 3:
+Eq: x[4,1] = ( x0[4,1] + ( b[1,1] Kro x1[4,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: z1[4,1] = ( y1[4,1] - ( W[4,4] * x[4,1] ) )
+Eq.ann: {}
+Entry 5:
+Eq: z2[4,1] = ( y2[4,1] - ( y[4,1] - ( A[4,4] * x[4,1] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: v1[4,1] = ( ( a[1,1] Kro v1[4,1] ) + ( t[1,1] Kro z1[4,1] ) )
+Eq.ann: {}
+Entry 7:
+Eq: v2[4,1] = ( ( a[1,1] Kro v2[4,1] ) + ( t[1,1] Kro z2[4,1] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  4, Decl { {u'A': SquaredMatrix[A, (4, 4), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (4, 1), GenMatAccess], u'y2': Matrix[y2, (4, 1), GenMatAccess], u'v1': Matrix[v1, (4, 1), GenMatAccess], u'v2': Matrix[v2, (4, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (4, 4), GenMatAccess], u'y': Matrix[y, (4, 1), GenMatAccess], u'x': Matrix[x, (4, 1), GenMatAccess], u'x0': Matrix[x0, (4, 1), GenMatAccess], u'x1': Matrix[x1, (4, 1), GenMatAccess], u'z1': Matrix[z1, (4, 1), GenMatAccess], u'z2': Matrix[z2, (4, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: Tile( (1, 1), Tile( (4, 4), y1[4,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[4,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[4,1] ) ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), Tile( (4, 4), y2[4,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[4,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[4,1] ) ) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Tile( (4, 4), x1[4,1] ) ) = ( ( T( Tile( (1, 1), Tile( (4, 4), W[4,4] ) ) ) * Tile( (1, 1), Tile( (4, 4), y1[4,1] ) ) ) - ( T( Tile( (1, 1), Tile( (4, 4), A[4,4] ) ) ) * Tile( (1, 1), Tile( (4, 4), y2[4,1] ) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), Tile( (4, 4), x[4,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), x0[4,1] ) ) + ( Tile( (1, 1), Tile( (4, 4), b[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), x1[4,1] ) ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), Tile( (4, 4), z1[4,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y1[4,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), W[4,4] ) ) * Tile( (1, 1), Tile( (4, 4), x[4,1] ) ) ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), Tile( (4, 4), z2[4,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y2[4,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), y[4,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), A[4,4] ) ) * Tile( (1, 1), Tile( (4, 4), x[4,1] ) ) ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), Tile( (4, 4), v1[4,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[4,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[4,1] ) ) ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), Tile( (4, 4), v2[4,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[4,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[4,1] ) ) ) )
+Eq.ann: {}
+, 2.95375922046 f/c -- folder: /tmp/lgen/l1a-4-52-8.abq.2017-08-14.1780618278
+
+
+
+  Compiling took 0:00:13.704399 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-14 23:14:16.625039 ----------------------------------------
+
+  Decl { {u'A': SquaredMatrix[A, (12, 12), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (12, 1), GenMatAccess], u'y2': Matrix[y2, (12, 1), GenMatAccess], u'v1': Matrix[v1, (12, 1), GenMatAccess], u'v2': Matrix[v2, (12, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (12, 12), GenMatAccess], u'y': Matrix[y, (12, 1), GenMatAccess], u'x': Matrix[x, (12, 1), GenMatAccess], u'x0': Matrix[x0, (12, 1), GenMatAccess], u'x1': Matrix[x1, (12, 1), GenMatAccess], u'z1': Matrix[z1, (12, 1), GenMatAccess], u'z2': Matrix[z2, (12, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y1[12,1] = ( ( a[1,1] Kro v1[12,1] ) + ( t[1,1] Kro z1[12,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: y2[12,1] = ( ( a[1,1] Kro v2[12,1] ) + ( t[1,1] Kro z2[12,1] ) )
+Eq.ann: {}
+Entry 2:
+Eq: x1[12,1] = ( ( T( W[12,12] ) * y1[12,1] ) - ( T( A[12,12] ) * y2[12,1] ) )
+Eq.ann: {}
+Entry 3:
+Eq: x[12,1] = ( x0[12,1] + ( b[1,1] Kro x1[12,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: z1[12,1] = ( y1[12,1] - ( W[12,12] * x[12,1] ) )
+Eq.ann: {}
+Entry 5:
+Eq: z2[12,1] = ( y2[12,1] - ( y[12,1] - ( A[12,12] * x[12,1] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: v1[12,1] = ( ( a[1,1] Kro v1[12,1] ) + ( t[1,1] Kro z1[12,1] ) )
+Eq.ann: {}
+Entry 7:
+Eq: v2[12,1] = ( ( a[1,1] Kro v2[12,1] ) + ( t[1,1] Kro z2[12,1] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  12, Decl { {u'A': SquaredMatrix[A, (12, 12), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (12, 1), GenMatAccess], u'y2': Matrix[y2, (12, 1), GenMatAccess], u'v1': Matrix[v1, (12, 1), GenMatAccess], u'v2': Matrix[v2, (12, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (12, 12), GenMatAccess], u'y': Matrix[y, (12, 1), GenMatAccess], u'x': Matrix[x, (12, 1), GenMatAccess], u'x0': Matrix[x0, (12, 1), GenMatAccess], u'x1': Matrix[x1, (12, 1), GenMatAccess], u'z1': Matrix[z1, (12, 1), GenMatAccess], u'z2': Matrix[z2, (12, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: Tile( (1, 1), Tile( (4, 4), y1[12,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[12,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[12,1] ) ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), Tile( (4, 4), y2[12,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[12,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[12,1] ) ) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Tile( (4, 4), x1[12,1] ) ) = ( ( T( Tile( (1, 1), Tile( (4, 4), W[12,12] ) ) ) * Tile( (1, 1), Tile( (4, 4), y1[12,1] ) ) ) - ( T( Tile( (1, 1), Tile( (4, 4), A[12,12] ) ) ) * Tile( (1, 1), Tile( (4, 4), y2[12,1] ) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), Tile( (4, 4), x[12,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), x0[12,1] ) ) + ( Tile( (1, 1), Tile( (4, 4), b[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), x1[12,1] ) ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), Tile( (4, 4), z1[12,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y1[12,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), W[12,12] ) ) * Tile( (1, 1), Tile( (4, 4), x[12,1] ) ) ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), Tile( (4, 4), z2[12,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y2[12,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), y[12,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), A[12,12] ) ) * Tile( (1, 1), Tile( (4, 4), x[12,1] ) ) ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), Tile( (4, 4), v1[12,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[12,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[12,1] ) ) ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), Tile( (4, 4), v2[12,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[12,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[12,1] ) ) ) )
+Eq.ann: {}
+, 1.92823461356 f/c -- folder: /tmp/lgen/l1a-4-52-8.abq.2017-08-14.1780618278
+
+
+
+  Compiling took 0:00:16.030164 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-14 23:14:32.834188 ----------------------------------------
+
+  Decl { {u'A': SquaredMatrix[A, (20, 20), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (20, 1), GenMatAccess], u'y2': Matrix[y2, (20, 1), GenMatAccess], u'v1': Matrix[v1, (20, 1), GenMatAccess], u'v2': Matrix[v2, (20, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (20, 20), GenMatAccess], u'y': Matrix[y, (20, 1), GenMatAccess], u'x': Matrix[x, (20, 1), GenMatAccess], u'x0': Matrix[x0, (20, 1), GenMatAccess], u'x1': Matrix[x1, (20, 1), GenMatAccess], u'z1': Matrix[z1, (20, 1), GenMatAccess], u'z2': Matrix[z2, (20, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y1[20,1] = ( ( a[1,1] Kro v1[20,1] ) + ( t[1,1] Kro z1[20,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: y2[20,1] = ( ( a[1,1] Kro v2[20,1] ) + ( t[1,1] Kro z2[20,1] ) )
+Eq.ann: {}
+Entry 2:
+Eq: x1[20,1] = ( ( T( W[20,20] ) * y1[20,1] ) - ( T( A[20,20] ) * y2[20,1] ) )
+Eq.ann: {}
+Entry 3:
+Eq: x[20,1] = ( x0[20,1] + ( b[1,1] Kro x1[20,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: z1[20,1] = ( y1[20,1] - ( W[20,20] * x[20,1] ) )
+Eq.ann: {}
+Entry 5:
+Eq: z2[20,1] = ( y2[20,1] - ( y[20,1] - ( A[20,20] * x[20,1] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: v1[20,1] = ( ( a[1,1] Kro v1[20,1] ) + ( t[1,1] Kro z1[20,1] ) )
+Eq.ann: {}
+Entry 7:
+Eq: v2[20,1] = ( ( a[1,1] Kro v2[20,1] ) + ( t[1,1] Kro z2[20,1] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  20, Decl { {u'A': SquaredMatrix[A, (20, 20), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (20, 1), GenMatAccess], u'y2': Matrix[y2, (20, 1), GenMatAccess], u'v1': Matrix[v1, (20, 1), GenMatAccess], u'v2': Matrix[v2, (20, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (20, 20), GenMatAccess], u'y': Matrix[y, (20, 1), GenMatAccess], u'x': Matrix[x, (20, 1), GenMatAccess], u'x0': Matrix[x0, (20, 1), GenMatAccess], u'x1': Matrix[x1, (20, 1), GenMatAccess], u'z1': Matrix[z1, (20, 1), GenMatAccess], u'z2': Matrix[z2, (20, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: Tile( (1, 1), Tile( (4, 4), y1[20,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[20,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[20,1] ) ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), Tile( (4, 4), y2[20,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[20,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[20,1] ) ) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Tile( (4, 4), x1[20,1] ) ) = ( ( T( Tile( (1, 1), Tile( (4, 4), W[20,20] ) ) ) * Tile( (1, 1), Tile( (4, 4), y1[20,1] ) ) ) - ( T( Tile( (1, 1), Tile( (4, 4), A[20,20] ) ) ) * Tile( (1, 1), Tile( (4, 4), y2[20,1] ) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), Tile( (4, 4), x[20,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), x0[20,1] ) ) + ( Tile( (1, 1), Tile( (4, 4), b[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), x1[20,1] ) ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), Tile( (4, 4), z1[20,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y1[20,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), W[20,20] ) ) * Tile( (1, 1), Tile( (4, 4), x[20,1] ) ) ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), Tile( (4, 4), z2[20,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y2[20,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), y[20,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), A[20,20] ) ) * Tile( (1, 1), Tile( (4, 4), x[20,1] ) ) ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), Tile( (4, 4), v1[20,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[20,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[20,1] ) ) ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), Tile( (4, 4), v2[20,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[20,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[20,1] ) ) ) )
+Eq.ann: {}
+, 2.59994471382 f/c -- folder: /tmp/lgen/l1a-4-52-8.abq.2017-08-14.1780618278
+
+
+
+  Compiling took 0:00:16.271139 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-14 23:14:49.287543 ----------------------------------------
+
+  Decl { {u'A': SquaredMatrix[A, (28, 28), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (28, 1), GenMatAccess], u'y2': Matrix[y2, (28, 1), GenMatAccess], u'v1': Matrix[v1, (28, 1), GenMatAccess], u'v2': Matrix[v2, (28, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (28, 28), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'x0': Matrix[x0, (28, 1), GenMatAccess], u'x1': Matrix[x1, (28, 1), GenMatAccess], u'z1': Matrix[z1, (28, 1), GenMatAccess], u'z2': Matrix[z2, (28, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y1[28,1] = ( ( a[1,1] Kro v1[28,1] ) + ( t[1,1] Kro z1[28,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: y2[28,1] = ( ( a[1,1] Kro v2[28,1] ) + ( t[1,1] Kro z2[28,1] ) )
+Eq.ann: {}
+Entry 2:
+Eq: x1[28,1] = ( ( T( W[28,28] ) * y1[28,1] ) - ( T( A[28,28] ) * y2[28,1] ) )
+Eq.ann: {}
+Entry 3:
+Eq: x[28,1] = ( x0[28,1] + ( b[1,1] Kro x1[28,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: z1[28,1] = ( y1[28,1] - ( W[28,28] * x[28,1] ) )
+Eq.ann: {}
+Entry 5:
+Eq: z2[28,1] = ( y2[28,1] - ( y[28,1] - ( A[28,28] * x[28,1] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: v1[28,1] = ( ( a[1,1] Kro v1[28,1] ) + ( t[1,1] Kro z1[28,1] ) )
+Eq.ann: {}
+Entry 7:
+Eq: v2[28,1] = ( ( a[1,1] Kro v2[28,1] ) + ( t[1,1] Kro z2[28,1] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  28, Decl { {u'A': SquaredMatrix[A, (28, 28), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (28, 1), GenMatAccess], u'y2': Matrix[y2, (28, 1), GenMatAccess], u'v1': Matrix[v1, (28, 1), GenMatAccess], u'v2': Matrix[v2, (28, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (28, 28), GenMatAccess], u'y': Matrix[y, (28, 1), GenMatAccess], u'x': Matrix[x, (28, 1), GenMatAccess], u'x0': Matrix[x0, (28, 1), GenMatAccess], u'x1': Matrix[x1, (28, 1), GenMatAccess], u'z1': Matrix[z1, (28, 1), GenMatAccess], u'z2': Matrix[z2, (28, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: Tile( (1, 1), Tile( (4, 4), y1[28,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[28,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[28,1] ) ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), Tile( (4, 4), y2[28,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[28,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[28,1] ) ) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Tile( (4, 4), x1[28,1] ) ) = ( ( T( Tile( (1, 1), Tile( (4, 4), W[28,28] ) ) ) * Tile( (1, 1), Tile( (4, 4), y1[28,1] ) ) ) - ( T( Tile( (1, 1), Tile( (4, 4), A[28,28] ) ) ) * Tile( (1, 1), Tile( (4, 4), y2[28,1] ) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), Tile( (4, 4), x[28,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), x0[28,1] ) ) + ( Tile( (1, 1), Tile( (4, 4), b[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), x1[28,1] ) ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), Tile( (4, 4), z1[28,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y1[28,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), W[28,28] ) ) * Tile( (1, 1), Tile( (4, 4), x[28,1] ) ) ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), Tile( (4, 4), z2[28,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y2[28,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), y[28,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), A[28,28] ) ) * Tile( (1, 1), Tile( (4, 4), x[28,1] ) ) ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), Tile( (4, 4), v1[28,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[28,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[28,1] ) ) ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), Tile( (4, 4), v2[28,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[28,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[28,1] ) ) ) )
+Eq.ann: {}
+, 2.64341644916 f/c -- folder: /tmp/lgen/l1a-4-52-8.abq.2017-08-14.1780618278
+
+
+
+  Compiling took 0:00:15.994366 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-14 23:15:05.464770 ----------------------------------------
+
+  Decl { {u'A': SquaredMatrix[A, (36, 36), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (36, 1), GenMatAccess], u'y2': Matrix[y2, (36, 1), GenMatAccess], u'v1': Matrix[v1, (36, 1), GenMatAccess], u'v2': Matrix[v2, (36, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (36, 36), GenMatAccess], u'y': Matrix[y, (36, 1), GenMatAccess], u'x': Matrix[x, (36, 1), GenMatAccess], u'x0': Matrix[x0, (36, 1), GenMatAccess], u'x1': Matrix[x1, (36, 1), GenMatAccess], u'z1': Matrix[z1, (36, 1), GenMatAccess], u'z2': Matrix[z2, (36, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y1[36,1] = ( ( a[1,1] Kro v1[36,1] ) + ( t[1,1] Kro z1[36,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: y2[36,1] = ( ( a[1,1] Kro v2[36,1] ) + ( t[1,1] Kro z2[36,1] ) )
+Eq.ann: {}
+Entry 2:
+Eq: x1[36,1] = ( ( T( W[36,36] ) * y1[36,1] ) - ( T( A[36,36] ) * y2[36,1] ) )
+Eq.ann: {}
+Entry 3:
+Eq: x[36,1] = ( x0[36,1] + ( b[1,1] Kro x1[36,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: z1[36,1] = ( y1[36,1] - ( W[36,36] * x[36,1] ) )
+Eq.ann: {}
+Entry 5:
+Eq: z2[36,1] = ( y2[36,1] - ( y[36,1] - ( A[36,36] * x[36,1] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: v1[36,1] = ( ( a[1,1] Kro v1[36,1] ) + ( t[1,1] Kro z1[36,1] ) )
+Eq.ann: {}
+Entry 7:
+Eq: v2[36,1] = ( ( a[1,1] Kro v2[36,1] ) + ( t[1,1] Kro z2[36,1] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  36, Decl { {u'A': SquaredMatrix[A, (36, 36), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (36, 1), GenMatAccess], u'y2': Matrix[y2, (36, 1), GenMatAccess], u'v1': Matrix[v1, (36, 1), GenMatAccess], u'v2': Matrix[v2, (36, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (36, 36), GenMatAccess], u'y': Matrix[y, (36, 1), GenMatAccess], u'x': Matrix[x, (36, 1), GenMatAccess], u'x0': Matrix[x0, (36, 1), GenMatAccess], u'x1': Matrix[x1, (36, 1), GenMatAccess], u'z1': Matrix[z1, (36, 1), GenMatAccess], u'z2': Matrix[z2, (36, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: Tile( (1, 1), Tile( (4, 4), y1[36,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[36,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[36,1] ) ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), Tile( (4, 4), y2[36,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[36,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[36,1] ) ) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Tile( (4, 4), x1[36,1] ) ) = ( ( T( Tile( (1, 1), Tile( (4, 4), W[36,36] ) ) ) * Tile( (1, 1), Tile( (4, 4), y1[36,1] ) ) ) - ( T( Tile( (1, 1), Tile( (4, 4), A[36,36] ) ) ) * Tile( (1, 1), Tile( (4, 4), y2[36,1] ) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), Tile( (4, 4), x[36,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), x0[36,1] ) ) + ( Tile( (1, 1), Tile( (4, 4), b[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), x1[36,1] ) ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), Tile( (4, 4), z1[36,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y1[36,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), W[36,36] ) ) * Tile( (1, 1), Tile( (4, 4), x[36,1] ) ) ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), Tile( (4, 4), z2[36,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y2[36,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), y[36,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), A[36,36] ) ) * Tile( (1, 1), Tile( (4, 4), x[36,1] ) ) ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), Tile( (4, 4), v1[36,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[36,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[36,1] ) ) ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), Tile( (4, 4), v2[36,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[36,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[36,1] ) ) ) )
+Eq.ann: {}
+, 2.66639852259 f/c -- folder: /tmp/lgen/l1a-4-52-8.abq.2017-08-14.1780618278
+
+
+
+  Compiling took 0:00:16.046019 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-14 23:15:21.692041 ----------------------------------------
+
+  Decl { {u'A': SquaredMatrix[A, (44, 44), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (44, 1), GenMatAccess], u'y2': Matrix[y2, (44, 1), GenMatAccess], u'v1': Matrix[v1, (44, 1), GenMatAccess], u'v2': Matrix[v2, (44, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (44, 44), GenMatAccess], u'y': Matrix[y, (44, 1), GenMatAccess], u'x': Matrix[x, (44, 1), GenMatAccess], u'x0': Matrix[x0, (44, 1), GenMatAccess], u'x1': Matrix[x1, (44, 1), GenMatAccess], u'z1': Matrix[z1, (44, 1), GenMatAccess], u'z2': Matrix[z2, (44, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y1[44,1] = ( ( a[1,1] Kro v1[44,1] ) + ( t[1,1] Kro z1[44,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: y2[44,1] = ( ( a[1,1] Kro v2[44,1] ) + ( t[1,1] Kro z2[44,1] ) )
+Eq.ann: {}
+Entry 2:
+Eq: x1[44,1] = ( ( T( W[44,44] ) * y1[44,1] ) - ( T( A[44,44] ) * y2[44,1] ) )
+Eq.ann: {}
+Entry 3:
+Eq: x[44,1] = ( x0[44,1] + ( b[1,1] Kro x1[44,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: z1[44,1] = ( y1[44,1] - ( W[44,44] * x[44,1] ) )
+Eq.ann: {}
+Entry 5:
+Eq: z2[44,1] = ( y2[44,1] - ( y[44,1] - ( A[44,44] * x[44,1] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: v1[44,1] = ( ( a[1,1] Kro v1[44,1] ) + ( t[1,1] Kro z1[44,1] ) )
+Eq.ann: {}
+Entry 7:
+Eq: v2[44,1] = ( ( a[1,1] Kro v2[44,1] ) + ( t[1,1] Kro z2[44,1] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  44, Decl { {u'A': SquaredMatrix[A, (44, 44), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (44, 1), GenMatAccess], u'y2': Matrix[y2, (44, 1), GenMatAccess], u'v1': Matrix[v1, (44, 1), GenMatAccess], u'v2': Matrix[v2, (44, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (44, 44), GenMatAccess], u'y': Matrix[y, (44, 1), GenMatAccess], u'x': Matrix[x, (44, 1), GenMatAccess], u'x0': Matrix[x0, (44, 1), GenMatAccess], u'x1': Matrix[x1, (44, 1), GenMatAccess], u'z1': Matrix[z1, (44, 1), GenMatAccess], u'z2': Matrix[z2, (44, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: Tile( (1, 1), Tile( (4, 4), y1[44,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[44,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[44,1] ) ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), Tile( (4, 4), y2[44,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[44,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[44,1] ) ) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Tile( (4, 4), x1[44,1] ) ) = ( ( T( Tile( (1, 1), Tile( (4, 4), W[44,44] ) ) ) * Tile( (1, 1), Tile( (4, 4), y1[44,1] ) ) ) - ( T( Tile( (1, 1), Tile( (4, 4), A[44,44] ) ) ) * Tile( (1, 1), Tile( (4, 4), y2[44,1] ) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), Tile( (4, 4), x[44,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), x0[44,1] ) ) + ( Tile( (1, 1), Tile( (4, 4), b[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), x1[44,1] ) ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), Tile( (4, 4), z1[44,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y1[44,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), W[44,44] ) ) * Tile( (1, 1), Tile( (4, 4), x[44,1] ) ) ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), Tile( (4, 4), z2[44,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y2[44,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), y[44,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), A[44,44] ) ) * Tile( (1, 1), Tile( (4, 4), x[44,1] ) ) ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), Tile( (4, 4), v1[44,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[44,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[44,1] ) ) ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), Tile( (4, 4), v2[44,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[44,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[44,1] ) ) ) )
+Eq.ann: {}
+, 2.46867780719 f/c -- folder: /tmp/lgen/l1a-4-52-8.abq.2017-08-14.1780618278
+
+
+
+  Compiling took 0:00:16.046578 ----------------------------------------------------------
+
+  Starting compiler at 2017-08-14 23:15:38.051781 ----------------------------------------
+
+  Decl { {u'A': SquaredMatrix[A, (52, 52), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (52, 1), GenMatAccess], u'y2': Matrix[y2, (52, 1), GenMatAccess], u'v1': Matrix[v1, (52, 1), GenMatAccess], u'v2': Matrix[v2, (52, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (52, 52), GenMatAccess], u'y': Matrix[y, (52, 1), GenMatAccess], u'x': Matrix[x, (52, 1), GenMatAccess], u'x0': Matrix[x0, (52, 1), GenMatAccess], u'x1': Matrix[x1, (52, 1), GenMatAccess], u'z1': Matrix[z1, (52, 1), GenMatAccess], u'z2': Matrix[z2, (52, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: y1[52,1] = ( ( a[1,1] Kro v1[52,1] ) + ( t[1,1] Kro z1[52,1] ) )
+Eq.ann: {}
+Entry 1:
+Eq: y2[52,1] = ( ( a[1,1] Kro v2[52,1] ) + ( t[1,1] Kro z2[52,1] ) )
+Eq.ann: {}
+Entry 2:
+Eq: x1[52,1] = ( ( T( W[52,52] ) * y1[52,1] ) - ( T( A[52,52] ) * y2[52,1] ) )
+Eq.ann: {}
+Entry 3:
+Eq: x[52,1] = ( x0[52,1] + ( b[1,1] Kro x1[52,1] ) )
+Eq.ann: {}
+Entry 4:
+Eq: z1[52,1] = ( y1[52,1] - ( W[52,52] * x[52,1] ) )
+Eq.ann: {}
+Entry 5:
+Eq: z2[52,1] = ( y2[52,1] - ( y[52,1] - ( A[52,52] * x[52,1] ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: v1[52,1] = ( ( a[1,1] Kro v1[52,1] ) + ( t[1,1] Kro z1[52,1] ) )
+Eq.ann: {}
+Entry 7:
+Eq: v2[52,1] = ( ( a[1,1] Kro v2[52,1] ) + ( t[1,1] Kro z2[52,1] ) )
+Eq.ann: {}
+ : VALIDATED.
+
+
+
+  52, Decl { {u'A': SquaredMatrix[A, (52, 52), GenMatAccess], u'a': Scalar[a, (1, 1), GenMatAccess], u'b': Scalar[b, (1, 1), GenMatAccess], u'y1': Matrix[y1, (52, 1), GenMatAccess], u'y2': Matrix[y2, (52, 1), GenMatAccess], u'v1': Matrix[v1, (52, 1), GenMatAccess], u'v2': Matrix[v2, (52, 1), GenMatAccess], u't': Scalar[t, (1, 1), GenMatAccess], u'W': SquaredMatrix[W, (52, 52), GenMatAccess], u'y': Matrix[y, (52, 1), GenMatAccess], u'x': Matrix[x, (52, 1), GenMatAccess], u'x0': Matrix[x0, (52, 1), GenMatAccess], u'x1': Matrix[x1, (52, 1), GenMatAccess], u'z1': Matrix[z1, (52, 1), GenMatAccess], u'z2': Matrix[z2, (52, 1), GenMatAccess]} }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ann: {}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entry 0:
+Entry 0:
+Eq: Tile( (1, 1), Tile( (4, 4), y1[52,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[52,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[52,1] ) ) ) )
+Eq.ann: {}
+Entry 1:
+Eq: Tile( (1, 1), Tile( (4, 4), y2[52,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[52,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[52,1] ) ) ) )
+Eq.ann: {}
+Entry 2:
+Eq: Tile( (1, 1), Tile( (4, 4), x1[52,1] ) ) = ( ( T( Tile( (1, 1), Tile( (4, 4), W[52,52] ) ) ) * Tile( (1, 1), Tile( (4, 4), y1[52,1] ) ) ) - ( T( Tile( (1, 1), Tile( (4, 4), A[52,52] ) ) ) * Tile( (1, 1), Tile( (4, 4), y2[52,1] ) ) ) )
+Eq.ann: {}
+Entry 3:
+Eq: Tile( (1, 1), Tile( (4, 4), x[52,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), x0[52,1] ) ) + ( Tile( (1, 1), Tile( (4, 4), b[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), x1[52,1] ) ) ) )
+Eq.ann: {}
+Entry 4:
+Eq: Tile( (1, 1), Tile( (4, 4), z1[52,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y1[52,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), W[52,52] ) ) * Tile( (1, 1), Tile( (4, 4), x[52,1] ) ) ) )
+Eq.ann: {}
+Entry 5:
+Eq: Tile( (1, 1), Tile( (4, 4), z2[52,1] ) ) = ( Tile( (1, 1), Tile( (4, 4), y2[52,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), y[52,1] ) ) - ( Tile( (1, 1), Tile( (4, 4), A[52,52] ) ) * Tile( (1, 1), Tile( (4, 4), x[52,1] ) ) ) ) )
+Eq.ann: {}
+Entry 6:
+Eq: Tile( (1, 1), Tile( (4, 4), v1[52,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v1[52,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z1[52,1] ) ) ) )
+Eq.ann: {}
+Entry 7:
+Eq: Tile( (1, 1), Tile( (4, 4), v2[52,1] ) ) = ( ( Tile( (1, 1), Tile( (4, 4), a[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), v2[52,1] ) ) ) + ( Tile( (1, 1), Tile( (4, 4), t[1,1] ) ) Kro Tile( (1, 1), Tile( (4, 4), z2[52,1] ) ) ) )
+Eq.ann: {}
+, 2.20243489224 f/c -- folder: /tmp/lgen/l1a-4-52-8.abq.2017-08-14.1780618278
+
+
+
+  Compiling took 0:00:15.884254 ----------------------------------------------------------
+

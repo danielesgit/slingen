@@ -1,0 +1,58 @@
+%%--------------------------------------------------------------%
+%%------------- Gaussian Process Regression (GPR) --------------%
+%%--------------------------------------------------------------%
+
+%%-------------- Equations -------------------------------------%
+
+%%Inputs: X (inputs), y (targets), k (covariance func), s (noise level), x (test input)
+
+%% L*L^T = (K(X,X) + sI)
+%% L^T*a = (L\y)
+%% f = K(X,x)^T*a
+%% L*v = K(X,x)
+%% prvar = k(x,x) - v^T*v
+%% logp = -0.5*y^Ta - Sum_i log L_ii - n/2*log 2*pi
+
+%% Assuming k(x,y) = x^T*y
+%% X has one input per row
+
+%% L*L^T = (K + sI)
+%% L^T*a = (L\y)
+%% kx = X*x
+%% f = kx^T*a
+%% L*v = kx
+%% prvar = x^T*x - v^T*v
+%% logp = -0.5*y^Ta - Sum_i log L_ii - n/2*log 2*pi
+%%-------------- I/O matrices & vectors ------------------------%
+
+Matrix K(@m,@m)  <Input,  Symmetric, SPD, LowerStorage>;
+Matrix L(@m,@m)  <Output, LowerTriangular, Non-singular, overwrites(K)>;
+Matrix L0(@m,@m) <Input,  LowerTriangular, Non-singular, overwrites(K)>;
+Matrix X(@m,@k)  <Input>;
+
+Vector x(@k) <Input>;
+Vector y(@m) <Input>;
+Vector t0(@m) <Output, overwrites(y)>;
+Vector t1(@m) <Input,  overwrites(t0)>;
+Vector a(@m) <Output, overwrites(t1)>;
+Vector kx(@m) <InOut>;
+Vector t2(@m) <Input, overwrites(kx)>;
+Vector v(@m) <Output, overwrites(t2)>;
+
+Scalar f <Output>;
+Scalar var <Output>;
+Scalar lp <Output>;
+
+%%-------------- LA Statements --------------------%
+
+%%inoutorder:   K y kx X x f var lp (8)
+%%kernelorder:  y X x // K t0 kx f var lp (2 + 6)
+				
+L*trans(L) = K;							%% m*m*m/3 
+L0*t0 = y;								%% m*m
+trans(L0)*a = t1;						%% m*m
+kx = X*x;								%% 2*m*k
+f = trans(kx)*y;						%% 2*m
+L0*v = t2;								%% m*m
+var = trans(x)*x - trans(kx)*kx;		%% 2*k + 2*m
+lp  = trans(y)*y;						%% 2*m 

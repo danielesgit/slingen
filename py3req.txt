@@ -1,0 +1,3 @@
+grako==3.99.9
+mpmath==0.19
+sympy==1.1

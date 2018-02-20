@@ -1,0 +1,7 @@
+CC = icpc
+LD = icpc
+CFLAGS = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -I/home/danieles/sw/eigen -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST
+LDFLAGS =  
+ARCH = x86
+
+make -s -C /tmp/lgen/dlusylp-4-124-24.abq.2017-08-16.2458715616 CC="icpc" CFLAGS="-O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -I/home/danieles/sw/eigen -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST" LD="icpc" LDFLAGS=" " ARCH="x86" all

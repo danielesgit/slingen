@@ -1,0 +1,7 @@
+CC = icpc
+LD = icpc
+CFLAGS = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -I/home/danieles/sw/eigen -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST
+LDFLAGS =  
+ARCH = x86
+
+make -s -C /tmp/lgen/kf-n28-4-28-4.abq.2017-08-17.801307949 CC="icpc" CFLAGS="-O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -I/home/danieles/sw/eigen -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST" LD="icpc" LDFLAGS=" " ARCH="x86" all

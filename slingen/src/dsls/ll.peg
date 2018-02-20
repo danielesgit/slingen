@@ -1,0 +1,280 @@
+(*
+	PEG for LL
+*)
+
+program = 
+	{decl+:declaration}
+	{stmt+:statement}
+	$
+	;
+
+(* Declaration of scalars, vectors, and matrices *)
+
+declaration = (vartype:"Scalar" name:id "<" iotype:io ">" ";")
+            | (vartype:"Vector" name:id dims:dim_vector "<" iotype:io ["," ow:ow] ">" ";")
+            | (vartype:"Matrix" name:id dims:dim_matrix "<" iotype:io { "," props+:prop } ["," ow:ow] ">" ";") 
+            ;
+
+dim_vector = 
+			"(" [id+:id "="] val+:numexpr ")" 
+			;
+dim_matrix = 
+			"(" [id+:id "="] val+:numexpr "," [id+:id "="] val+:numexpr ")"
+			;
+
+io = "Input" | "Output" | "InOut" | "tInput" | "tOutput" | "tInOut"
+	;
+
+prop = @:"Square" | @:"Rectangular"
+     | @:"Diagonal" | @:"LowerTriangular" | @:"UpperTriangular" | @:"UnitDiagonal" | @:"ImplicitUnitDiagonal"
+     | @:"Symmetric" | @:"Non-singular" | @:"SPD"
+     | @:"LowerStorage" | @: "UpperStorage" 
+     ;
+
+ow = "overwrites" "(" @:id ")" 
+	;
+
+(*
+declaration =
+	var+:id	{',' var+:id}	':' type:type ';'
+	;
+
+type =
+	scalar | vector | matrix | triang | symm | identity
+	;
+
+scalar =
+	mtype:'scalar' '<' attr+:iotype '>'
+	;
+	
+vector =
+	mtype:'vector' '<' attr+:numexpr ',' attr+:iotype '>'
+	;
+	
+matrix =
+	mtype:'matrix' '<' attr+:numexpr ',' attr+:numexpr ',' attr+:iotype [',' attr+:struct] '>'
+	;
+
+triang =
+	mtype:'triangular' '<' attr+:numexpr ',' attr+:struct ',' attr+:iotype '>'
+	;
+
+symm =
+	mtype:'symmetric' '<' attr+:numexpr ',' attr+:struct ',' attr+:iotype '>'
+	;
+
+identity =
+	mtype:'identity' '<' attr+:numexpr ',' attr+:iotype '>'
+	;
+
+struct =
+	( 'l' | 'u' )
+	;
+
+iotype =
+	( 'in' | 'out' | 'inout' | 'tin' | 'tout' | 'tinout' ) 
+	;
+*)
+
+(* Statements *)
+
+statement =
+	(llfor | llif | equation) ';' 
+	;
+
+llfor =
+    "For" >> preprocs looptop:looptop "{" {body+:statement}+ "}"
+    ;
+
+looptop =
+	"[" idx:id ";" lb:numexpr ";" ub:numexpr ";" s:numexpr "]"
+	;
+
+llif = 
+	"If" >> preprocs guard:guard "{" {then+:statement}+ "}"
+	;
+
+guard =
+	"[" ce:condexpr "]"
+	;
+	
+equation =
+	[ eqann:eqann ] lhs:lhs '=' rhs:rhs 
+	;
+	
+eqann =
+	"#" @+:eqanntxt {";" @+:eqanntxt }* "#"
+	;
+
+eqanntxt =
+	?/[^;#]*/?
+	;
+	
+lhs =
+	(* id:id *)
+	@:lexpr | "[" multiout+:lexpr {"," multiout+:lexpr } "]"
+	;
+
+lexpr =
+	term+:lterm {op+:add term+:lterm}
+	;
+
+lterm =
+	factor+:planefactor {fop+:md >> factor+:planefactor}
+	;
+
+rhs = 
+	@:expr
+	;
+
+expr =
+	term+:term {op+:add term+:term}
+	;
+
+term =
+	factor+:factor {fop+:md >> factor+:factor}
+	;
+
+factor =
+	@scatter | @scatteracc | @planefactor
+	;
+
+scatter =
+	"[" simf:imf "," simf:imf "]" factor:factor
+	;
+
+scatteracc =
+	"$[" saimf:imf "," saimf:imf "]" factor:factor
+	;
+
+planefactor =
+	[ sign:add ] ('inv' '(' inv:expr ')' | 'trans' '(' trans:expr ')' | 'sqrt' '(' sqrt:expr ')' | func:funcall | '(' par:expr ')' | id:id | const:constnum ) preprocg gather:gather
+	;
+
+funcall =
+	name:id '(' m:numexpr ',' n:numexpr ';' params+:expr { ',' >> params+:expr} ')'
+	;
+
+gather =
+(*  	"[" gimf:imf "," gimf:imf "]" [ann:ann] gather:gather | () *)
+  	"[" imf "," imf "]" [ann:ann] gather | ()
+	;
+
+ann =
+	"#" @+:txt {"," @+:txt }* "#"
+	;
+	
+(* empty marks used to introduce preprocessing *)
+preprocg = () ;
+preprocs = () ;
+
+(* IMFs *)
+
+imf =
+	@iimf | @genimf | @himf  
+	;
+	
+genimf =
+  "f(" >> params:numexpr "," params:numexpr "," params:numexpr "," params:numexpr ")"
+  ;
+
+himf =
+  "h(" >> params:numexpr "," params:numexpr "," params:numexpr[ ","  params:numexpr ] ")" 
+  ;
+
+iimf =
+  "fI(" >> params:numexpr ")" 
+  ;
+
+
+(* Common rules *)
+
+condexpr =
+	condterm+:condterm {"||" >> condterm+:condterm}
+	;
+
+condterm =
+	condfactor+:condfactor {"&&" >> condfactor+:condfactor}
+	;
+
+condfactor =
+	["("] condl:numexpr condsym:condsym condr:numexpr [")"]
+  	;
+
+numexpr =
+	[ sign:add ] numterm+:numterm {op+:add >> numterm+:numterm}
+	;
+
+(*
+numterm =
+	numfactor+:numfactor {'*' >> numfactor+:numfactor} ["/" >> numden:int | "%" >> nummod:int]
+	;
+*)
+
+numterm =
+	numfactor+:numfactor {op+:mul >> numfactor+:numfactor}
+	;
+
+numfactor = 
+	mod | floord | ceild | min | max | id:id | const:zint | numsubexpr
+	;
+
+mod =
+  ("mod(" | "Mod(") >> modl:numexpr "," modr:numexpr ")"
+  ;
+
+floord =
+  "floord(" >> fnum:numexpr "," fden:int ")"
+  ;
+
+numsubexpr = 
+  '(' >> numpar:numexpr ')'
+  ;
+  
+ceild =
+  "ceild(" >> cnum:numexpr "," cden:int ")"
+  ;
+
+min =
+  ("min(" | "Min(") >> minl:numexpr "," minr:numexpr ")"
+  ;
+
+max =
+  ("max(" | "Max(") >> maxl:numexpr "," maxr:numexpr ")"
+  ;
+
+condsym =
+  "==" | ">=" | ">" | "<=" | "<" | "!="
+  ;
+  
+add =
+	?/[\+-]/?
+	;
+
+mul =
+	?/[\*/]/?
+	;
+
+md =
+	?/[\\\*/]/?
+	;
+
+txt =
+	?/[^,#]*/?
+	;
+
+constnum =
+	?/[0-9]+/?
+	;
+	
+zint =
+	"0" | int
+	;
+	
+int =
+	?/[1-9][0-9]*/? | ?/[A-Za-z]/? 
+	;
+	
+id =
+	?/[A-Za-z][A-Za-z0-9_]*/?
+	;

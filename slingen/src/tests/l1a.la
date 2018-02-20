@@ -1,0 +1,50 @@
+%%--------------------------------------------------------------%
+%%------------- Gaussian Process Regression (GPR) --------------%
+%%--------------------------------------------------------------%
+
+%%-------------- Equations -------------------------------------%
+
+%%Inputs: X (inputs), y (targets), k (covariance func), s (noise level), x (test input)
+
+%%y1 = a*v1 + t*z1
+%%y2 = a*v2 + t*z2
+%%x  = x0 + b*(trans(W)*y1 - trans(A)*y2)
+%%z1 = y1 - W*x
+%%z2 = y2 -(y - Ax)
+%%v1 = a*v1 + t*z1
+%%v2 = a*v2 + t*z2
+
+
+%%-------------- I/O matrices & vectors ------------------------%
+
+Vector v1(@n) <InOut>;
+Vector y1(@n) <InOut>;
+Vector z1(@n) <InOut>;
+Vector v2(@m) <InOut>;
+Vector y2(@m) <InOut>;
+Vector z2(@m) <InOut>;
+Vector x0(@k) <Input>;
+Vector x1(@k) <InOut>;
+Vector x(@k)  <InOut>;
+Vector y(@m)  <Input>;
+
+Matrix A(@m,@k)  <Input>;
+Matrix W(@n,@k)  <Input>;
+
+Scalar a <Input>;
+Scalar b <Input>;
+Scalar t <Input>;
+
+%%-------------- LA Statements --------------------% 
+
+%%inoutorder:   y1 a v1 t z1 y2 v2 z2 x1 W A x x0 b y (15)
+%%kernelorder:  a t W A x0 b y // y1 v1 z1 y2 v2 z2 x1 x (7 + 8)
+%% 4*m*k + 4*k*n + 7*m + k + 6*n				
+y1 = a*v1 + t*z1;							%% 3*n
+y2 = a*v2 + t*z2;							%% 3*m
+x1 = trans(W)*y1 - trans(A)*y2;
+x  = x0 + b*x1;								%% 2*k*n + 2*k*m + k
+z1 = y1 - W*x;								%% 2*n*k 
+z2 = y2 -(y - A*x);							%% 2*m*k + m
+v1 = a*v1 + t*z1;							%% 3*n
+v2 = a*v2 + t*z2;							%% 3*m

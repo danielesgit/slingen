@@ -1,0 +1,203 @@
+(*
+	PEG for Sigma-LL
+*)
+
+program = 
+(*	{decl+:declaration}+ *)
+	{stmt+:statement}+
+	$
+	;
+
+(* Statements *)
+
+statement =
+	(llfor | llif | equation) ';' 
+	;
+
+llfor =
+    "For" >> preprocs looptop:looptop "{" {body+:statement}+ "}"
+    ;
+
+looptop =
+	"[" idx:id ";" lb:numexpr ";" ub:numexpr ";" s:numexpr "]"
+	;
+
+llif = 
+	"If" >> preprocs guard:guard "{" {then+:statement}+ "}"
+	;
+
+guard =
+	"[" ce:condexpr "]"
+	;
+	
+equation =
+	lhs:lhs '=' rhs:rhs
+	;
+
+lhs =
+	id:id
+	;
+
+rhs = 
+	@:expr
+	;
+
+expr =
+	term+:term {op+:add >> term+:term}
+	;
+
+term =
+	factor+:factor {fop+:md >> factor+:factor}
+	;
+
+factor =
+	@scatter | @scatteracc | @planefactor
+	;
+
+scatter =
+	"[" simf:imf "," simf:imf "]" factor:factor
+	;
+
+scatteracc =
+	"$[" saimf:imf "," saimf:imf "]" factor:factor
+	;
+
+planefactor =
+	[ sign:add ] (factor:sum | factor:trans | factor:sqrt | factor:subexpr | id:id | const:constnum ) preprocg gather:gather
+	;
+
+gather =
+  	"[" gimf:imf "," gimf:imf "]" gather:gather | ()
+	;
+
+(* empty marks used to introduce preprocessing *)
+preprocg = () ;
+preprocs = () ;
+
+(*  [ ("[" scat:imf "," scat:imf "]" | "$[" scatacc:imf "," scatacc:imf "]") ]
+  (sum:sum | id:id | subexpr | trans) 
+  [ "[" gat:imf "," gat:imf "]" ]
+	;
+*)
+
+sum =
+  "Sum" >> "[" idx:id ";" lb:numexpr ";" ub:numexpr ";" s:numexpr "]" "{" body:expr "}"
+  ;
+  
+trans =
+  'trans' '(' >> @expr ')'
+  ;
+
+sqrt =
+  'sqrt' '(' >> @expr ')'
+  ;
+  
+subexpr =
+  '(' par:expr ')' [ "[" guard:condexpr "]" ]
+  ;
+
+(* IMFs *)
+
+imf =
+	@iimf | @genimf | @himf  
+	;
+	
+genimf =
+  "f(" >> params:numexpr "," params:numexpr "," params:numexpr "," params:numexpr ")"
+  ;
+
+himf =
+  "h(" >> params:numexpr "," params:numexpr "," params:numexpr[ ","  params:numexpr ] ")" 
+  ;
+
+iimf =
+  "fI(" >> params:numexpr ")" 
+  ;
+
+(* Common rules *)
+
+condexpr =
+	condterm+:condterm {"||" >> condterm+:condterm}
+	;
+
+condterm =
+	condfactor+:condfactor {"&&" >> condfactor+:condfactor}
+	;
+
+condfactor =
+	["("] condl:numexpr condsym:condsym condr:numexpr [")"]
+  	;
+
+numexpr =
+	[ sign:add ] numterm+:numterm {op+:add >> numterm+:numterm}
+	;
+
+(*
+numterm =
+	numfactor+:numfactor {'*' >> numfactor+:numfactor} ["/" >> numden:int | "%" >> nummod:int]
+	;
+*)
+
+numterm =
+	numfactor+:numfactor {op+:mul >> numfactor+:numfactor}
+	;
+  
+numfactor = 
+	mod | floord | ceild | min | max | id:id | const:zint | numsubexpr
+	;
+
+mod =
+  ("mod(" | "Mod(") >> modl:numexpr "," modr:numexpr ")"
+  ;
+
+floord =
+  "floord(" >> fnum:numexpr "," fden:int ")"
+  ;
+
+numsubexpr = 
+  '(' >> numpar:numexpr ')'
+  ;
+  
+ceild =
+  "ceild(" >> cnum:numexpr "," cden:int ")"
+  ;
+
+min =
+  ("min(" | "Min(") >> minl:numexpr "," minr:numexpr ")"
+  ;
+
+max =
+  ("max(" | "Max(") >> maxl:numexpr "," maxr:numexpr ")"
+  ;
+
+condsym =
+  "==" | ">=" | ">" | "<=" | "<" | "!="
+  ;
+  
+add =
+	?/[\+-]/?
+	;
+
+mul =
+	?/[\*/]/?
+	;
+
+md =
+	?/[\\\*/]/?
+	;
+
+constnum =
+	?/[0-9]+/?
+	;
+	
+zint =
+	"0" | int
+	;
+	
+int =
+	?/[1-9][0-9]*/? | ?/[A-Za-z]/? 
+	;
+	
+id =
+	?/[A-Za-z][A-Za-z0-9_]*/?
+	;

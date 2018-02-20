@@ -1,0 +1,7 @@
+CC = icpc
+LD = icpc
+CFLAGS = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DMKL_ILP64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/include -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST
+LDFLAGS =  -Wl,--start-group /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64/libmkl_intel_ilp64.a /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64/libmkl_core.a /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64/libmkl_sequential.a -Wl,--end-group -lpthread -lm -ldl
+ARCH = x86
+
+make -s -C /tmp/lgen/dupotrf-ow-opt-4-128-24.abq.2016-10-09.433552932 CC="icpc" CFLAGS="-O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DMKL_ILP64 -I/opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/include -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST" LD="icpc" LDFLAGS=" -Wl,--start-group /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64/libmkl_intel_ilp64.a /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64/libmkl_core.a /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/lib/intel64/libmkl_sequential.a -Wl,--end-group -lpthread -lm -ldl" ARCH="x86" all

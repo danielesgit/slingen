@@ -1,0 +1,19 @@
+WARNING: Error = 1.19188e-07: P | at (i,j) = (0,4) P = -0.0800007 - Pout = -0.0800007
+ WARNING: Error = 1.40567e-06: P | at (i,j) = (1,50) P = -0.00554042 - Pout = -0.00554043
+ WARNING: Error = 4.13089e-06: P | at (i,j) = (5,6) P = -0.000286661 - Pout = -0.00028666
+ WARNING: Error = 1.92272e-07: P | at (i,j) = (5,20) P = 0.0574346 - Pout = 0.0574345
+ WARNING: Error = 1.33801e-06: P | at (i,j) = (12,47) P = -0.00882838 - Pout = -0.00882839
+ WARNING: Error = 1.5817e-07: P | at (i,j) = (13,48) P = -0.0532346 - Pout = -0.0532346
+ WARNING: Error = 4.43826e-07: P | at (i,j) = (14,20) P = 0.018365 - Pout = 0.018365
+ WARNING: Error = 2.22413e-07: P | at (i,j) = (14,25) P = 0.0913287 - Pout = 0.0913287
+ WARNING: Error = 1.76908e-07: P | at (i,j) = (16,43) P = 0.0701344 - Pout = 0.0701344
+ WARNING: Error = 3.43265e-07: P | at (i,j) = (18,48) P = -0.0189548 - Pout = -0.0189548
+ WARNING: Error = 1.42885e-07: P | at (i,j) = (19,37) P = 0.0656508 - Pout = 0.0656508
+ WARNING: Error = 1.1952e-07: P | at (i,j) = (21,41) P = 0.0379869 - Pout = 0.0379869
+ WARNING: Error = 1.27826e-07: P | at (i,j) = (23,26) P = -0.0793052 - Pout = -0.0793052
+ WARNING: Error = 1.67554e-06: P | at (i,j) = (24,47) P = -0.00534448 - Pout = -0.00534447
+ WARNING: Error = 1.55803e-07: P | at (i,j) = (28,43) P = -0.150128 - Pout = -0.150128
+ WARNING: Error = 2.52903e-07: P | at (i,j) = (30,33) P = -0.0487864 - Pout = -0.0487863
+ WARNING: Error = 3.07438e-07: P | at (i,j) = (33,34) P = 0.0478357 - Pout = 0.0478357
+ WARNING: Error = 1.69394e-07: P | at (i,j) = (36,49) P = -0.115425 - Pout = -0.115425
+ WARNING: Error = 1.28139e-07: P | at (i,j) = (38,40) P = 0.118376 - Pout = 0.118376

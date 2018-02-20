@@ -1,0 +1,7 @@
+CC = icpc
+LD = icpc
+CFLAGS = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST -DERRTHRESH=1e-14
+LDFLAGS =  
+ARCH = x86
+
+make -s -C /tmp/lgen/dllyap-4-124-24.abq.2017-08-08.1358837090 CC="icpc" CFLAGS="-O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST -DERRTHRESH=1e-14" LD="icpc" LDFLAGS=" " ARCH="x86" all

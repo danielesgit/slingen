@@ -1,0 +1,7 @@
+CC = icpc
+LD = icpc
+CFLAGS = -O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST
+LDFLAGS =  /opt/lib/librelapack.a -mkl -lifcore
+ARCH = x86
+
+make -s -C /tmp/lgen/dltrtri-ow-opt-4-128-24.abq.2016-10-26.2197738046 CC="icpc" CFLAGS="-O3 -xHost -fargument-noalias -fno-alias -no-ipo -no-ip -DVALIDATE -DTYPE=1 -DALIGN=32 -DTEST" LD="icpc" LDFLAGS=" /opt/lib/librelapack.a -mkl -lifcore" ARCH="x86" all
