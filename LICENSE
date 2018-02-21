@@ -199,3 +199,18 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+   
+==============================================================================
+Copyrights and Licenses for Third Party Software Distributed with SLinGen:
+==============================================================================
+The SLinGen software contains modified version of code written by third parties.  
+Such software will have its own individual LICENSE.TXT file in the directory 
+in which it appears. This file will point to licenses which apply to that code.
+
+The following pieces of software have additional or alternate copyrights,
+licenses, and/or restrictions:
+
+Module              Directory                  Original code
+-------             ---------                  ---------
+Algogen             slingen/src/algogen        Cl1ck
+Sigma-CLooG         slingen/src/scloog         CLooG
