@@ -213,4 +213,4 @@ licenses, and/or restrictions:
 Module              Directory                  Original code
 -------             ---------                  ---------
 Algogen             slingen/src/algogen        Cl1ck
-Sigma-CLooG         slingen/src/scloog         CLooG
+Sigma-CLooG         scloog.tar.gz              CLooG
