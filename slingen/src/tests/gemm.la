@@ -1,0 +1,5 @@
+Matrix A(@m,@k) <Input>;
+Matrix B(@k,@n) <Input>;
+Matrix C(@m,@n) <InOut>;
+
+C = A*B+C;
